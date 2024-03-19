@@ -13,6 +13,12 @@
 		3E7F5EBA2BA87E0C0018BCEF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F5EB92BA87E0C0018BCEF /* Base */; };
 		3E7F5EBC2BA87E0E0018BCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F5EBB2BA87E0E0018BCEF /* Assets.xcassets */; };
 		3E7F5EBF2BA87E0E0018BCEF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F5EBE2BA87E0E0018BCEF /* Base */; };
+		3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5EC82BA8BAAC0018BCEF /* AuthViewController.swift */; };
+		3E7F5ECB2BAA14C00018BCEF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ECA2BAA14C00018BCEF /* TabBarController.swift */; };
+		3E7F5ECD2BAA16120018BCEF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */; };
+		3E7F5ECF2BAA16AF0018BCEF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */; };
+		3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */; };
+		3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED22BAA24170018BCEF /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		3E7F5EBB2BA87E0E0018BCEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E7F5EBE2BA87E0E0018BCEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E7F5EC02BA87E0E0018BCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E7F5EC82BA8BAAC0018BCEF /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		3E7F5ECA2BAA14C00018BCEF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		3E7F5ED22BAA24170018BCEF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,10 @@
 		3E7F5EB12BA87E0C0018BCEF /* uir */ = {
 			isa = PBXGroup;
 			children = (
+				3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */,
+				3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */,
+				3E7F5ED22BAA24170018BCEF /* Extensions.swift */,
+				3E7F5EC72BA8BA6F0018BCEF /* Auth */,
 				3E7F5EB22BA87E0C0018BCEF /* AppDelegate.swift */,
 				3E7F5EB42BA87E0C0018BCEF /* SceneDelegate.swift */,
 				3E7F5EB62BA87E0C0018BCEF /* ViewController.swift */,
@@ -63,8 +79,18 @@
 				3E7F5EBB2BA87E0E0018BCEF /* Assets.xcassets */,
 				3E7F5EBD2BA87E0E0018BCEF /* LaunchScreen.storyboard */,
 				3E7F5EC02BA87E0E0018BCEF /* Info.plist */,
+				3E7F5ECA2BAA14C00018BCEF /* TabBarController.swift */,
+				3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */,
 			);
 			path = uir;
+			sourceTree = "<group>";
+		};
+		3E7F5EC72BA8BA6F0018BCEF /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3E7F5EC82BA8BAAC0018BCEF /* AuthViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */,
+				3E7F5ECD2BAA16120018BCEF /* ProfileViewController.swift in Sources */,
+				3E7F5ECF2BAA16AF0018BCEF /* TaskViewController.swift in Sources */,
+				3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */,
+				3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */,
 				3E7F5EB72BA87E0C0018BCEF /* ViewController.swift in Sources */,
+				3E7F5ECB2BAA14C00018BCEF /* TabBarController.swift in Sources */,
 				3E7F5EB32BA87E0C0018BCEF /* AppDelegate.swift in Sources */,
 				3E7F5EB52BA87E0C0018BCEF /* SceneDelegate.swift in Sources */,
 			);

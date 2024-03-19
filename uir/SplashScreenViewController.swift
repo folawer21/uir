@@ -14,10 +14,13 @@ final class SplashScreenViewController: UIViewController{
     
     override func viewDidLoad() {
         configScreen()
+        switchScreen()
+        
         
     }
     
     func configScreen(){
+        view.backgroundColor = .white
         configImageView()
         addSubViews()
         activateConstraints()
@@ -25,6 +28,7 @@ final class SplashScreenViewController: UIViewController{
     
     func configImageView(){
         imageView.image = UIImage(named: "mifiLogo")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func addSubViews(){
@@ -42,13 +46,14 @@ final class SplashScreenViewController: UIViewController{
         if isAuthenticated{
             switchToTabBar()
         }else{
-            
+            switchToAuthController()
         }
     }
     
     func switchToTabBar(){
         guard let window = UIApplication.shared.windows.first else {
             assertionFailure("Invalid window configuration")
+            return
         }
         let tabBarController = TabBarController()
         window.rootViewController = tabBarController
@@ -57,6 +62,7 @@ final class SplashScreenViewController: UIViewController{
     func switchToAuthController(){
         guard let window = UIApplication.shared.windows.first else {
             assertionFailure("Invalid window configuration")
+            return
         }
         let authViewController = AuthViewController()
         window.rootViewController = authViewController
