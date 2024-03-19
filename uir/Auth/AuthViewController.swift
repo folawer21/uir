@@ -14,7 +14,8 @@ final class AuthViewController: UIViewController{
     let loginInputLabel = UITextField()
     let passwordInputLabel = UITextField()
     let borderView = UIView()
-    let authTextView = UIView(frame: CGRect(x: 51, y: 247, width: 217, height: 51))
+    let authTextView = UIView()
+    let logoView = UIImageView()
     func configViews(){
         view.backgroundColor = .white
         configBorderView()
@@ -23,6 +24,7 @@ final class AuthViewController: UIViewController{
         configLoginInputLabel()
         configPasswordInputLabel()
         configLoginButton()
+        configLogoView()
     }
     func configBorderView(){
         borderView.backgroundColor = UIColor(named: "greyForView")
@@ -78,6 +80,11 @@ final class AuthViewController: UIViewController{
         loginButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    func configLogoView(){
+        logoView.image = UIImage(named: "mifiLogo")
+        logoView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     func addSubViews(){
         viewSubViews()
         authTextViewSubViews()
@@ -87,6 +94,7 @@ final class AuthViewController: UIViewController{
     func viewSubViews(){
         view.addSubview(borderView)
         view.insertSubview(authTextView, belowSubview: borderView)
+        view.addSubview(logoView)
     }
     
     func authTextViewSubViews(){
@@ -101,9 +109,8 @@ final class AuthViewController: UIViewController{
 
     func activateConstraints(){
         NSLayoutConstraint.activate([
-            borderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
             borderView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            borderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
+            borderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             borderView.heightAnchor.constraint(equalToConstant: 215),
             borderView.widthAnchor.constraint(equalToConstant: 322),
             
@@ -111,6 +118,9 @@ final class AuthViewController: UIViewController{
             authTextView.bottomAnchor.constraint(equalTo: borderView.topAnchor,constant: 20),
             authTextView.heightAnchor.constraint(equalToConstant: 51),
             authTextView.widthAnchor.constraint(equalToConstant: 217),
+            
+            logoView.topAnchor.constraint(equalTo: borderView.bottomAnchor, constant: 100),
+            logoView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             authLabel.centerXAnchor.constraint(equalTo: authTextView.centerXAnchor),
             authLabel.topAnchor.constraint(equalTo: authTextView.topAnchor, constant: 5),

@@ -8,7 +8,8 @@
 import UIKit
 
 final class TaskViewController: UIViewController{
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    override func viewDidLoad() {
+        view.backgroundColor = .white
     }
 }
+

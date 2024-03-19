@@ -8,7 +8,7 @@
 import UIKit
 
 final class SplashScreenViewController: UIViewController{
-    let isAuthenticated = false
+    let isAuthenticated = true
     let imageView = UIImageView()
     
     

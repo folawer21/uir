@@ -19,6 +19,7 @@
 		3E7F5ECF2BAA16AF0018BCEF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */; };
 		3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */; };
 		3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED22BAA24170018BCEF /* Extensions.swift */; };
+		3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		3E7F5ED22BAA24170018BCEF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousTestsLIst.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		3E7F5EA62BA87E0C0018BCEF = {
 			isa = PBXGroup;
 			children = (
+				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 				3E7F5EB12BA87E0C0018BCEF /* uir */,
 				3E7F5EB02BA87E0C0018BCEF /* Products */,
 			);
@@ -168,6 +171,7 @@
 				3E7F5ECD2BAA16120018BCEF /* ProfileViewController.swift in Sources */,
 				3E7F5ECF2BAA16AF0018BCEF /* TaskViewController.swift in Sources */,
 				3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */,
+				3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */,
 				3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */,
 				3E7F5EB72BA87E0C0018BCEF /* ViewController.swift in Sources */,
 				3E7F5ECB2BAA14C00018BCEF /* TabBarController.swift in Sources */,
