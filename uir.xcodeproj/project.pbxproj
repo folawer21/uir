@@ -54,7 +54,6 @@
 		3E7F5EA62BA87E0C0018BCEF = {
 			isa = PBXGroup;
 			children = (
-				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 				3E7F5EB12BA87E0C0018BCEF /* uir */,
 				3E7F5EB02BA87E0C0018BCEF /* Products */,
 			);
@@ -84,6 +83,7 @@
 				3E7F5EC02BA87E0E0018BCEF /* Info.plist */,
 				3E7F5ECA2BAA14C00018BCEF /* TabBarController.swift */,
 				3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */,
+				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 			);
 			path = uir;
 			sourceTree = "<group>";
