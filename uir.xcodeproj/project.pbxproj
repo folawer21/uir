@@ -20,6 +20,7 @@
 		3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */; };
 		3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED22BAA24170018BCEF /* Extensions.swift */; };
 		3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */; };
+		3E7F5EDA2BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		3E7F5ED22BAA24170018BCEF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousTestsLIst.swift; sourceTree = "<group>"; };
+		3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkOrCorrectTextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		3E7F5EB12BA87E0C0018BCEF /* uir */ = {
 			isa = PBXGroup;
 			children = (
+				3E7F5ED82BB173000018BCEF /* Tasks */,
 				3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */,
 				3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */,
 				3E7F5ED22BAA24170018BCEF /* Extensions.swift */,
@@ -94,6 +97,14 @@
 				3E7F5EC82BA8BAAC0018BCEF /* AuthViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		3E7F5ED82BB173000018BCEF /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 				3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */,
 				3E7F5EB72BA87E0C0018BCEF /* ViewController.swift in Sources */,
 				3E7F5ECB2BAA14C00018BCEF /* TabBarController.swift in Sources */,
+				3E7F5EDA2BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift in Sources */,
 				3E7F5EB32BA87E0C0018BCEF /* AppDelegate.swift in Sources */,
 				3E7F5EB52BA87E0C0018BCEF /* SceneDelegate.swift in Sources */,
 			);
