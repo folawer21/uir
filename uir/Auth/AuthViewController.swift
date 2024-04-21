@@ -27,7 +27,7 @@ final class AuthViewController: UIViewController{
         configLogoView()
     }
     func configBorderView(){
-        borderView.backgroundColor = UIColor(named: "greyForView")
+        borderView.backgroundColor = UIColor(named: "greyForHeaders")
         borderView.layer.cornerRadius = 20
         borderView.layer.borderWidth = 2
         borderView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,6 +108,7 @@ final class AuthViewController: UIViewController{
     }
 
     func activateConstraints(){
+        //TODO: УБРАТЬ КОНСТАНТЫ ИЗ РАЗМЕРОВ
         NSLayoutConstraint.activate([
             borderView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             borderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

@@ -21,6 +21,9 @@
 		3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED22BAA24170018BCEF /* Extensions.swift */; };
 		3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */; };
 		3E7F5EDA2BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */; };
+		3E97BFA72BD54A7D00CF3A7F /* BlockUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97BFA62BD54A7D00CF3A7F /* BlockUIView.swift */; };
+		3E97BFA92BD54DD600CF3A7F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */; };
+		3E97BFAB2BD5788800CF3A7F /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97BFAA2BD5788800CF3A7F /* extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		3E7F5ED22BAA24170018BCEF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousTestsLIst.swift; sourceTree = "<group>"; };
 		3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkOrCorrectTextViewController.swift; sourceTree = "<group>"; };
+		3E97BFA62BD54A7D00CF3A7F /* BlockUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUIView.swift; sourceTree = "<group>"; };
+		3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		3E97BFAA2BD5788800CF3A7F /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		3E7F5EA62BA87E0C0018BCEF = {
 			isa = PBXGroup;
 			children = (
+				3E97BFAA2BD5788800CF3A7F /* extensions.swift */,
 				3E7F5EB12BA87E0C0018BCEF /* uir */,
 				3E7F5EB02BA87E0C0018BCEF /* Products */,
 			);
@@ -72,6 +79,7 @@
 		3E7F5EB12BA87E0C0018BCEF /* uir */ = {
 			isa = PBXGroup;
 			children = (
+				3E97BFA62BD54A7D00CF3A7F /* BlockUIView.swift */,
 				3E7F5ED82BB173000018BCEF /* Tasks */,
 				3E7F5ECE2BAA16AF0018BCEF /* TaskViewController.swift */,
 				3E7F5ED02BAA17BD0018BCEF /* SplashScreenViewController.swift */,
@@ -87,6 +95,7 @@
 				3E7F5ECA2BAA14C00018BCEF /* TabBarController.swift */,
 				3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */,
 				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
+				3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */,
 			);
 			path = uir;
 			sourceTree = "<group>";
@@ -181,7 +190,9 @@
 				3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */,
 				3E7F5ECD2BAA16120018BCEF /* ProfileViewController.swift in Sources */,
 				3E7F5ECF2BAA16AF0018BCEF /* TaskViewController.swift in Sources */,
+				3E97BFAB2BD5788800CF3A7F /* extensions.swift in Sources */,
 				3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */,
+				3E97BFA72BD54A7D00CF3A7F /* BlockUIView.swift in Sources */,
 				3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */,
 				3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */,
 				3E7F5EB72BA87E0C0018BCEF /* ViewController.swift in Sources */,
@@ -189,6 +200,7 @@
 				3E7F5EDA2BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift in Sources */,
 				3E7F5EB32BA87E0C0018BCEF /* AppDelegate.swift in Sources */,
 				3E7F5EB52BA87E0C0018BCEF /* SceneDelegate.swift in Sources */,
+				3E97BFA92BD54DD600CF3A7F /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +360,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,9 +368,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = folawer21.uir;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -376,6 +393,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,9 +401,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = folawer21.uir;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
