@@ -53,6 +53,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
     }()
     private var givenTextLabel:UILabel = {
         var textLabel = UILabel()
+        textLabel.numberOfLines = 0
         textLabel.textAlignment = .left
         textLabel.frame = CGRect(x: 0, y: 0, width: textLabel.bounds.size.width, height: textLabel.bounds.size.height)
         textLabel.font = .systemFont(ofSize: 16)
