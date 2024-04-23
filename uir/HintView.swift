@@ -8,16 +8,19 @@
 import UIKit
 
 final class HintView: UIView{
-    let mistakes: Int
-    let hint: String
-    let mistakesLabel = UILabel()
-    let hintLabel = UILabel()
+    private let mistakes: Int
+    private let hint: String
+    private let mistakesLabel = UILabel()
+    private let hintLabel = UILabel()
+    private let hintWidth = UIScreen.main.bounds.width - 32
+    private let hintHeight = UIScreen.main.bounds.height / 8
+    
     init(frame: CGRect, mistakes: Int, hint: String) {
         self.mistakes = mistakes
         self.hint = hint
         self.mistakesLabel.text = "Количество ошибок: \(mistakes)"
         self.hintLabel.text = "Подсказка: \(hint)"
-        super.init(frame: frame)
+        super.init(frame: CGRect(origin: .zero, size: CGSize(width: hintWidth, height: hintHeight)))
         buildView()
     }
     required init?(coder: NSCoder) {
@@ -26,7 +29,9 @@ final class HintView: UIView{
     
     private func buildView(){
         self.alpha = 0
-        
+        self.backgroundColor = UIColor(named: "blueForViews")
+        self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1
         configMistakes()
         configHint()
         addSubViews()
@@ -35,14 +40,12 @@ final class HintView: UIView{
     private func configHint(){
         hintLabel.sizeToFit()
         hintLabel.numberOfLines = 0
-        hintLabel.backgroundColor = .white
         hintLabel.font = .systemFont(ofSize: 16)
         hintLabel.textColor = .black
         hintLabel.translatesAutoresizingMaskIntoConstraints = false
         //        hintLabel.alpha = 0
     }
     private func configMistakes(){
-        mistakesLabel.backgroundColor = .white
         mistakesLabel.font = .systemFont(ofSize: 16)
         mistakesLabel.textColor = .black
         mistakesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -55,14 +58,14 @@ final class HintView: UIView{
     
     private func applyConstraints(){
         NSLayoutConstraint.activate([
-            mistakesLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            mistakesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            mistakesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            
-            hintLabel.topAnchor.constraint(equalTo: mistakesLabel.bottomAnchor, constant: 5),
+            hintLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             hintLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             hintLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            hintLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            
+            mistakesLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 5),
+            mistakesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            mistakesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            mistakesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])
     }
     

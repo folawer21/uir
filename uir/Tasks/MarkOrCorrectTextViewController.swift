@@ -8,15 +8,17 @@
 import UIKit
 
 final class MarkOrCorrectTextViewController: UIViewController{
+    // MARK: Подсказка
+    let hintView: HintView
     //MARK: Блоки
-    let taskBlock = UIView()
-    let givenBlock = UIView()
-    let answerBlock = UIView()
-    //Mark: Заголовки блоков
-    let headerTaskBlock = UIView()
-    let headerGivenBlock = UIView()
-    let headerAnswerBlock = UIView()
-    
+    private let taskBlock = UIView()
+    private let givenBlock = UIView()
+    private let answerBlock = UIView()
+    //MARK: Заголовки блоков
+    private let headerTaskBlock = UIView()
+    private let headerGivenBlock = UIView()
+    private let headerAnswerBlock = UIView()
+   
     //MARK: Тексты заголовков блоков
     private var headerTaskLabel:UILabel = {
         var textLabel = UILabel()
@@ -107,15 +109,23 @@ final class MarkOrCorrectTextViewController: UIViewController{
         return button
     }()
     //MARK: objc methods
-    
     @objc
-    private func infoButtonTapped(){
-        //TODO: UIVIew на котором будет hint, mistakes label => отдельный класс с инитом
-        let alert = UIAlertController()
-        alert.message = "ПОДСКАЗКА"
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-        present(alert, animated: true)
+    private func infoButtonTappedUp(){
+        hintView.hide()
     }
+    @objc
+    private func infoButtonDown(){
+        configHintView()
+        hintView.show()
+    }
+//    @objc
+//    private func infoButtonTapped(){
+//        //TODO: UIVIew на котором будет hint, mistakes label => отдельный класс с инитом
+//        let alert = UIAlertController()
+//        alert.message = "ПОДСКАЗКА"
+//        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+//        present(alert, animated: true)
+//    }
     @objc
     private func sendButtonTapped(){
         let alert = UIAlertController()
@@ -124,20 +134,22 @@ final class MarkOrCorrectTextViewController: UIViewController{
         present(alert, animated: true)
     }
     
-    @objc
-    private func textFieldDidBeginEditing(){
-        answerTextField.layer.borderColor = UIColor.blue.cgColor
-    }
-    
-    @objc
-    private func textFieldDidEndEditing(){
-        answerTextField.layer.borderColor = UIColor.black.cgColor
-    }
+//    @objc
+//    private func textFieldDidBeginEditing(){
+//        answerTextField.layer.borderColor = UIColor.blue.cgColor
+//    }
+//    
+//    @objc
+//    private func textFieldDidEndEditing(){
+//        answerTextField.layer.borderColor = UIColor.black.cgColor
+//    }
     //MARK: Init
     init(taskText: String, mistakes: Int,hint: String ) {
         self.givenTextLabel.text = "Условие задачи "
         self.numberOfMistakes = mistakes
         self.hint = hint
+        //Убрать переменные подсказки и ошибок
+        self.hintView = HintView(frame: .zero, mistakes: mistakes, hint: hint)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -145,6 +157,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
         self.givenTextLabel.text = ""
         self.numberOfMistakes = 0
         self.hint = ""
+        self.hintView = HintView(frame: .zero, mistakes: 0, hint: "")
         super.init(coder: coder)
     }
     
@@ -168,7 +181,9 @@ final class MarkOrCorrectTextViewController: UIViewController{
         headerAnswerBlock.headerView(radious: 20)
     }
     func addActions(){
-        hintButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        hintButton.addTarget(self, action: #selector(infoButtonTappedUp), for: .touchUpInside)
+        hintButton.addTarget(self, action: #selector(infoButtonDown), for: .touchDown)
+        
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
     }
     
@@ -176,6 +191,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
         view.addSubview(headerTaskBlock)
         view.addSubview(headerGivenBlock)
         view.addSubview(headerAnswerBlock)
+       
         
         view.addSubview(taskBlock)
         view.addSubview(givenBlock)
@@ -183,6 +199,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
         
         view.addSubview(sendButton)
         view.addSubview(hintButton)
+        view.addSubview(hintView)
     }
     func addViewToBlocks(){
         headerTaskBlock.addSubview(headerTaskLabel)
@@ -283,7 +300,10 @@ final class MarkOrCorrectTextViewController: UIViewController{
         ])
         
     }
-    
+    func configHintView(){
+        let buttonFrame = hintButton.frame
+        hintView.frame.origin = CGPoint(x: self.view.frame.minX + 10 , y: buttonFrame.maxY - 5 - hintView.frame.height)
+    }
 
 }
 
