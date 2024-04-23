@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = FillGapsViewController(taskText: "zfasfdd", mistakes: 2, hint: "ASFASFAFSfSA. ASFSAF ASF ASF AsF ASF. ASFASF AFS ASF Af AS fASF A")
+        window?.rootViewController = LiqueurScaleViewController(task: "Установите правильный порядок традиционного подхода к процессу решения задач")
         window?.makeKeyAndVisible()
     }
 

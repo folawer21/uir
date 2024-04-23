@@ -26,6 +26,8 @@
 		3E97BFAB2BD5788800CF3A7F /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97BFAA2BD5788800CF3A7F /* extensions.swift */; };
 		3ED7504A2BD7F74000430F7B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED750492BD7F74000430F7B /* HintView.swift */; };
 		3ED7504C2BD84ED200430F7B /* FillGapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */; };
+		3ED7504E2BD858E100430F7B /* LiqueurScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */; };
+		3ED750502BD864D900430F7B /* LiqueurCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504F2BD864D900430F7B /* LiqueurCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		3E97BFAA2BD5788800CF3A7F /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = extensions.swift; path = ../extensions.swift; sourceTree = "<group>"; };
 		3ED750492BD7F74000430F7B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapsViewController.swift; sourceTree = "<group>"; };
+		3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqueurScaleViewController.swift; sourceTree = "<group>"; };
+		3ED7504F2BD864D900430F7B /* LiqueurCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqueurCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 				3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */,
 				3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */,
+				3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */,
+				3ED7504F2BD864D900430F7B /* LiqueurCell.swift */,
 			);
 			path = uir;
 			sourceTree = "<group>";
@@ -194,9 +200,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */,
+				3ED750502BD864D900430F7B /* LiqueurCell.swift in Sources */,
 				3ED7504A2BD7F74000430F7B /* HintView.swift in Sources */,
 				3E7F5ECD2BAA16120018BCEF /* ProfileViewController.swift in Sources */,
 				3E7F5ECF2BAA16AF0018BCEF /* TaskViewController.swift in Sources */,
+				3ED7504E2BD858E100430F7B /* LiqueurScaleViewController.swift in Sources */,
 				3E97BFAB2BD5788800CF3A7F /* extensions.swift in Sources */,
 				3E7F5ED12BAA17BD0018BCEF /* SplashScreenViewController.swift in Sources */,
 				3E97BFA72BD54A7D00CF3A7F /* BlockUIView.swift in Sources */,

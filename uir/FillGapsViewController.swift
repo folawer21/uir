@@ -81,7 +81,7 @@ final class FillGapsViewController: UIViewController{
         var button = UIButton()
         button.setTitle("Отправить", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 2
         button.translatesAutoresizingMaskIntoConstraints = false
