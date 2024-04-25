@@ -54,9 +54,9 @@ final class LiqueurCell: UITableViewCell{
     }
     func configCell(text: String){
         cellLabel.text = text
-        contentView.layer.borderWidth = 0.5
-        contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = UIColor(named: "blueForViews")
+        layer.borderWidth = 0.5
+        layer.cornerRadius = 10
+        backgroundColor = UIColor(named: "blueForViews")
         addSubViews()
         applyConstraints()
     }
@@ -65,3 +65,4 @@ final class LiqueurCell: UITableViewCell{
         self.cellLabel.text = ""
        }
 }
+

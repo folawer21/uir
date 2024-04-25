@@ -8,9 +8,10 @@
 import UIKit
 //TODO: Сделать перетягивание ячеек вместо цифр, чтобы потом валидацию не делать так удобнее будет
 final class LiqueurScaleViewController: UIViewController{
-    private let arr = ["Отображение задачи в математическую модель","Постановка задачи","Автоматическая трансляция во внутренний язык ЭВМ","Трансляция модели в программу на языке высокого уровня","AFs afds DSFSFD"]
+    
+    
+    private var arr = ["Отображение задачи в математическую модель","Постановка задачи","Автоматическая трансляция во внутренний язык ЭВМ","Трансляция модели в программу на языке высокого уровня","AFs afds DSFSFD","123","13","1413","4143","1535","51351235","53521541","41341","413341","153531315","1345351235","1535135135513"]
     private let headerLabel = {
-        //Проверить нужен ли sizeToFit()
         let label = UILabel()
         label.textColor = .black
         label.font = .systemFont(ofSize: 16)
@@ -37,7 +38,7 @@ final class LiqueurScaleViewController: UIViewController{
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 10
         tableView.backgroundColor = .white
-        tableView.layer.borderWidth = 1
+//        tableView.layer.borderWidth = 1
 //        tableView.isScrollEnabled = true
         return tableView
         
@@ -56,14 +57,13 @@ final class LiqueurScaleViewController: UIViewController{
         return label
     }()
     
-    
-   
     @objc private func sendButtonTapped(){
         let alert = UIAlertController()
         alert.message = "True" == "False" ? "Верно" : "Ошибка"
         alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
         present(alert, animated: true)
     }
+    
     private func configViews(){
         blockView.blockView(radious: 20)
         headerView.headerView(radious: 20)
@@ -144,7 +144,8 @@ final class LiqueurScaleViewController: UIViewController{
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LiqueurCell.self, forCellReuseIdentifier: "liqueurCell")
-
+        tableView.isEditing = true
+        
 
 //        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 10)
 //        tableView.scrollIndicatorInsets = tableView.contentInset
@@ -176,37 +177,51 @@ extension LiqueurScaleViewController: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "liqueurCell", for: indexPath) as? LiqueurCell else{
             return UITableViewCell()
         }
-        
 
-//        let text = arr[indexPath.row]
-
+        cell.configCell(text: arr[indexPath.row])
       
-        if indexPath.row % 2 == 0{
-            cell.configCell(text: arr[indexPath.row / 2])
-        }else{
-            cell.isHidden = true
-
-        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row % 2 == 1{
-            return 3
-        }else{
-            return UITableView.automaticDimension
-        }
-    }
-    
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return arr.count
-        return arr.count * 2 - 1
+        return arr.count
     }
     
     
 }
 
+
+
 extension LiqueurScaleViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
-  
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let removedElement = arr.remove(at: sourceIndexPath.row )
+        arr.insert(removedElement, at: destinationIndexPath.row )
+
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, editingActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let moveAction = UITableViewRowAction(style: .normal, title: "Переместить") { (action, indexPath) in
+            // Выполнить действие перемещения
+
+        }
+
+        return [moveAction]
+    }
+
+
+    
 }
