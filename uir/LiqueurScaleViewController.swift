@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
+//TODO: Сделать перетягивание ячеек вместо цифр, чтобы потом валидацию не делать так удобнее будет
 final class LiqueurScaleViewController: UIViewController{
-    private let arr = ["Отображение задачи в математическую модель","Постановка задачи","Автоматическая трансляция во внутренний язык ЭВМ","Трансляция модели в программу на языке высокого уровня"]
+    private let arr = ["Отображение задачи в математическую модель","Постановка задачи","Автоматическая трансляция во внутренний язык ЭВМ","Трансляция модели в программу на языке высокого уровня","AFs afds DSFSFD"]
     private let headerLabel = {
         //Проверить нужен ли sizeToFit()
         let label = UILabel()
@@ -38,7 +38,7 @@ final class LiqueurScaleViewController: UIViewController{
         tableView.layer.cornerRadius = 10
         tableView.backgroundColor = .white
         tableView.layer.borderWidth = 1
-        tableView.isScrollEnabled = true
+//        tableView.isScrollEnabled = true
         return tableView
         
     }()
@@ -115,9 +115,10 @@ final class LiqueurScaleViewController: UIViewController{
             tableView.topAnchor.constraint(equalTo: blockView.bottomAnchor,constant: smallBlockIndent),
             tableView.leadingAnchor.constraint(equalTo: blockView.leadingAnchor),
             tableView.widthAnchor.constraint(equalToConstant: blockWidth),
+            tableView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: -15),
             
-            sendButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 15),
-            sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -18),
+            sendButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             sendButton.heightAnchor.constraint(equalToConstant: sendButtonHeight),
             sendButton.widthAnchor.constraint(equalToConstant: buttonWidth),
                 
@@ -144,13 +145,19 @@ final class LiqueurScaleViewController: UIViewController{
         tableView.delegate = self
         tableView.register(LiqueurCell.self, forCellReuseIdentifier: "liqueurCell")
 
+
+//        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 10)
+//        tableView.scrollIndicatorInsets = tableView.contentInset
+        
         configViews()
         addTargets()
         addSubViews()
         applyConstraints()
-        
+        self.updateLayout(with: self.view.frame.size)
     }
-
+    private func updateLayout(with size: CGSize) {
+       self.tableView.frame = CGRect.init(origin: .zero, size: size)
+    }
     
     init(task: String){
         givenLabel.text = task
@@ -165,34 +172,41 @@ final class LiqueurScaleViewController: UIViewController{
 
 extension LiqueurScaleViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(141432134)
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "liqueurCell", for: indexPath) as? LiqueurCell else{
-            print(10000)
             return UITableViewCell()
         }
-        let text = arr[indexPath.row]
-        print(text)
-        cell.configCell(text: arr[indexPath.row])
         
+
+//        let text = arr[indexPath.row]
+
+      
+        if indexPath.row % 2 == 0{
+            cell.configCell(text: arr[indexPath.row / 2])
+        }else{
+            cell.isHidden = true
+
+        }
         return cell
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return arr.count
-        print(arr.count)
-        return arr.count
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row % 2 == 1{
+            return 3
+        }else{
+            return UITableView.automaticDimension
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return arr.count
+        return arr.count * 2 - 1
     }
+    
     
 }
 
-extension LiqueurScaleViewController:UITableViewDelegate{
+extension LiqueurScaleViewController: UITableViewDelegate{
     
+  
 }

@@ -28,6 +28,7 @@
 		3ED7504C2BD84ED200430F7B /* FillGapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */; };
 		3ED7504E2BD858E100430F7B /* LiqueurScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */; };
 		3ED750502BD864D900430F7B /* LiqueurCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504F2BD864D900430F7B /* LiqueurCell.swift */; };
+		3ED750522BD885A500430F7B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED750512BD885A500430F7B /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapsViewController.swift; sourceTree = "<group>"; };
 		3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqueurScaleViewController.swift; sourceTree = "<group>"; };
 		3ED7504F2BD864D900430F7B /* LiqueurCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqueurCell.swift; sourceTree = "<group>"; };
+		3ED750512BD885A500430F7B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		3E7F5EB12BA87E0C0018BCEF /* uir */ = {
 			isa = PBXGroup;
 			children = (
+				3ED750512BD885A500430F7B /* File.swift */,
 				3ED750492BD7F74000430F7B /* HintView.swift */,
 				3E97BFAA2BD5788800CF3A7F /* extensions.swift */,
 				3E97BFA62BD54A7D00CF3A7F /* BlockUIView.swift */,
@@ -216,6 +219,7 @@
 				3E7F5EDA2BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift in Sources */,
 				3E7F5EB32BA87E0C0018BCEF /* AppDelegate.swift in Sources */,
 				3E7F5EB52BA87E0C0018BCEF /* SceneDelegate.swift in Sources */,
+				3ED750522BD885A500430F7B /* File.swift in Sources */,
 				3E97BFA92BD54DD600CF3A7F /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
