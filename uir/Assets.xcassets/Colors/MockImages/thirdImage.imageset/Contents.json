@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Yellow gift with golden ribbon icon sign or symbol 3d background illustration.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

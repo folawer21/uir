@@ -117,7 +117,7 @@ final class LiqueurScaleViewController: UIViewController{
             tableView.widthAnchor.constraint(equalToConstant: blockWidth),
             tableView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: -15),
             
-            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -18),
+            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             sendButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             sendButton.heightAnchor.constraint(equalToConstant: sendButtonHeight),
             sendButton.widthAnchor.constraint(equalToConstant: buttonWidth),
