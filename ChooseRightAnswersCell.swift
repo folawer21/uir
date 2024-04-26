@@ -13,7 +13,7 @@ final class ChooseRightAnswersCell: UITableViewCell{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16)
         label.textColor = .black
-        label.backgroundColor = .white
+        label.backgroundColor = .blueForViews
         return label
     }()
     
@@ -43,6 +43,7 @@ final class ChooseRightAnswersCell: UITableViewCell{
     
     
     private func configContentView(){
+        contentView.backgroundColor = .blueForViews
         contentView.layer.borderWidth = 0.5
         contentView.layer.cornerRadius = 10
     }
@@ -63,7 +64,6 @@ final class ChooseRightAnswersCell: UITableViewCell{
             taskLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
             taskLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
             taskLabel.trailingAnchor.constraint(equalTo: checkButton.leadingAnchor, constant: -5),
-            taskLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
             checkButton.leadingAnchor.constraint(equalTo: taskLabel.trailingAnchor, constant: 5),
             checkButton.topAnchor.constraint(equalTo: taskLabel.topAnchor),
             checkButton.bottomAnchor.constraint(equalTo: taskLabel.bottomAnchor),

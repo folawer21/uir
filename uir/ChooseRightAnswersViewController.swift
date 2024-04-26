@@ -5,6 +5,7 @@
 //  Created by Александр  Сухинин on 26.04.2024.
 //
 
+//TODO: ПЕРЕДЕЛАТЬ НАХУЙ ЧТОБЫ НЕ У ЯЧЕЙКИ БЫЛА КНОПКА А ПРОСТО ПРИ НАЖАТИИ НА ЯЧЕЙКУ стиль ячейки менялся и соотвественно инфа на бэк уходила( добавлялась в массив строчка которая выбрана)
 import UIKit
 
 final class ChooseRightAnswersViewController: UIViewController{
@@ -142,10 +143,12 @@ final class ChooseRightAnswersViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(ChooseRightAnswersCell.self, forHeaderFooterViewReuseIdentifier: "rightAnswerCell")
-    
+//        tableView.delegate = self
+//        tableView.register(ChooseRightAnswersCell.self, forHeaderFooterViewReuseIdentifier: "rightAnswerCell")
+        tableView.register(ChooseRightAnswersCell.self, forCellReuseIdentifier: "rightAnswerCell")
+        
         configViews()
         addTargets()
         addSubViews()
@@ -173,7 +176,7 @@ extension ChooseRightAnswersViewController: UITableViewDataSource{
     
 }
 
-extension ChooseRightAnswersViewController: UITableViewDelegate{
-    
-}
-
+//extension ChooseRightAnswersViewController: UITableViewDelegate{
+//    
+//}
+//
