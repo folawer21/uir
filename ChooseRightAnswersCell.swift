@@ -17,12 +17,21 @@ final class ChooseRightAnswersCell: UITableViewCell{
         return label
     }()
     
-    private let checkButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-        
+//    private let checkButton = {
+//        let button = UIButton()
+//        button.layer.cornerRadius = 10
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//        
+//    }()
+    //Поменять размер фотки 
+    private let cellView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 10
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = .uncheckedButton
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     func configCell(text: String){
@@ -32,7 +41,7 @@ final class ChooseRightAnswersCell: UITableViewCell{
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configContentView()
-        configButton()
+//        configButton()
         addSubViews()
         applyConstraints()
         
@@ -49,30 +58,37 @@ final class ChooseRightAnswersCell: UITableViewCell{
     }
     
  
-    private func configButton(){
-        checkButton.setImage(UIImage(named: "uncheckedButton"), for: .normal)
-        checkButton.setImage(UIImage(named: "checkedButton"), for: .selected)
-        checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
-    }
+//    private func configButton(){
+//        checkButton.setImage(UIImage(named: "uncheckedButton"), for: .normal)
+//        checkButton.setImage(UIImage(named: "checkedButton"), for: .selected)
+//        checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
+//    }
     private func addSubViews(){
         contentView.addSubview(taskLabel)
-        contentView.addSubview(checkButton)
+        contentView.addSubview(cellView)
     }
     private func applyConstraints(){
         NSLayoutConstraint.activate([
             taskLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
             taskLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
             taskLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
-            taskLabel.trailingAnchor.constraint(equalTo: checkButton.leadingAnchor, constant: -5),
-            checkButton.leadingAnchor.constraint(equalTo: taskLabel.trailingAnchor, constant: 5),
-            checkButton.topAnchor.constraint(equalTo: taskLabel.topAnchor),
-            checkButton.bottomAnchor.constraint(equalTo: taskLabel.bottomAnchor),
-            checkButton.widthAnchor.constraint(equalToConstant: 45),
-            checkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6)
+            taskLabel.trailingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: -5),
+            cellView.leadingAnchor.constraint(equalTo: taskLabel.trailingAnchor, constant: 5),
+            cellView.topAnchor.constraint(equalTo: taskLabel.topAnchor),
+            cellView.bottomAnchor.constraint(equalTo: taskLabel.bottomAnchor),
+            cellView.widthAnchor.constraint(equalToConstant: 45),
+            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6)
         ])
     }
     
-    @objc private func checkButtonTapped(){
-        checkButton.isSelected = !checkButton.isSelected
+    func checkButtonTapped() -> Bool{
+        if cellView.image == UIImage(named: "uncheckedButton") {
+            cellView.image = .checkedButton
+            return true
+        }else{
+            cellView.image = .uncheckedButton
+            return false 
+        }
+       
     }
 }

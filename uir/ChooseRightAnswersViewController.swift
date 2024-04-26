@@ -145,7 +145,7 @@ final class ChooseRightAnswersViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.delegate = self
 //        tableView.register(ChooseRightAnswersCell.self, forHeaderFooterViewReuseIdentifier: "rightAnswerCell")
         tableView.register(ChooseRightAnswersCell.self, forCellReuseIdentifier: "rightAnswerCell")
         
@@ -166,6 +166,7 @@ extension ChooseRightAnswersViewController: UITableViewDataSource{
             return UITableViewCell()
         }
         let text = inputArr[indexPath.row]
+        cell.selectionStyle = .none
         cell.configCell(text: text)
         return cell
     }
@@ -176,7 +177,20 @@ extension ChooseRightAnswersViewController: UITableViewDataSource{
     
 }
 
-//extension ChooseRightAnswersViewController: UITableViewDelegate{
-//    
-//}
-//
+extension ChooseRightAnswersViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ChooseRightAnswersCell else {
+            return
+        }
+        let flag = cell.checkButtonTapped()
+        
+        if flag == true{
+            outputArr.append(inputArr[indexPath.row])
+        }
+        else{
+            outputArr.removeAll(where: {$0 == inputArr[indexPath.row]})
+        }
+        print(outputArr)
+    }
+}
+
