@@ -26,6 +26,8 @@
 		3E97BFAB2BD5788800CF3A7F /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E97BFAA2BD5788800CF3A7F /* extensions.swift */; };
 		3EBB6FAC2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */; };
 		3EBB6FAE2BDAFB0400AE45F3 /* ImageOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */; };
+		3EBB6FB02BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */; };
+		3EBB6FB22BDBF46400AE45F3 /* ChooseRightAnswersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */; };
 		3ED7504A2BD7F74000430F7B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED750492BD7F74000430F7B /* HintView.swift */; };
 		3ED7504C2BD84ED200430F7B /* FillGapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */; };
 		3ED7504E2BD858E100430F7B /* LiqueurScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */; };
@@ -55,6 +57,8 @@
 		3E97BFAA2BD5788800CF3A7F /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = extensions.swift; path = ../extensions.swift; sourceTree = "<group>"; };
 		3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectPhotosOrderViewController.swift; sourceTree = "<group>"; };
 		3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrderCell.swift; sourceTree = "<group>"; };
+		3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRightAnswersViewController.swift; sourceTree = "<group>"; };
+		3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRightAnswersCell.swift; sourceTree = "<group>"; };
 		3ED750492BD7F74000430F7B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapsViewController.swift; sourceTree = "<group>"; };
 		3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqueurScaleViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +80,7 @@
 		3E7F5EA62BA87E0C0018BCEF = {
 			isa = PBXGroup;
 			children = (
-				3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */,
+				3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */,
 				3E7F5EB12BA87E0C0018BCEF /* uir */,
 				3E7F5EB02BA87E0C0018BCEF /* Products */,
 			);
@@ -113,10 +117,7 @@
 				3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */,
 				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 				3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */,
-				3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */,
-				3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */,
-				3ED7504F2BD864D900430F7B /* LiqueurCell.swift */,
-				3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */,
+				3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */,
 			);
 			path = uir;
 			sourceTree = "<group>";
@@ -132,6 +133,11 @@
 		3E7F5ED82BB173000018BCEF /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				3ED7504F2BD864D900430F7B /* LiqueurCell.swift */,
+				3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */,
+				3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */,
+				3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */,
+				3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */,
 				3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */,
 			);
 			path = Tasks;
@@ -220,6 +226,7 @@
 				3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */,
 				3EBB6FAC2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift in Sources */,
 				3ED7504C2BD84ED200430F7B /* FillGapsViewController.swift in Sources */,
+				3EBB6FB02BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift in Sources */,
 				3EBB6FAE2BDAFB0400AE45F3 /* ImageOrderCell.swift in Sources */,
 				3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */,
 				3E7F5EB72BA87E0C0018BCEF /* ViewController.swift in Sources */,
@@ -228,6 +235,7 @@
 				3E7F5EB32BA87E0C0018BCEF /* AppDelegate.swift in Sources */,
 				3E7F5EB52BA87E0C0018BCEF /* SceneDelegate.swift in Sources */,
 				3ED750522BD885A500430F7B /* File.swift in Sources */,
+				3EBB6FB22BDBF46400AE45F3 /* ChooseRightAnswersCell.swift in Sources */,
 				3E97BFA92BD54DD600CF3A7F /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
