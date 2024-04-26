@@ -80,7 +80,6 @@
 		3E7F5EA62BA87E0C0018BCEF = {
 			isa = PBXGroup;
 			children = (
-				3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */,
 				3E7F5EB12BA87E0C0018BCEF /* uir */,
 				3E7F5EB02BA87E0C0018BCEF /* Products */,
 			);
@@ -117,7 +116,6 @@
 				3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */,
 				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 				3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */,
-				3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */,
 			);
 			path = uir;
 			sourceTree = "<group>";
@@ -135,7 +133,9 @@
 			children = (
 				3ED7504F2BD864D900430F7B /* LiqueurCell.swift */,
 				3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */,
+				3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */,
 				3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */,
+				3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */,
 				3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */,
 				3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */,
 				3E7F5ED92BB1731C0018BCEF /* MarkOrCorrectTextViewController.swift */,
