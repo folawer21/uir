@@ -28,8 +28,8 @@
 		3EBB6FAE2BDAFB0400AE45F3 /* ImageOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */; };
 		3EBB6FB02BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */; };
 		3EBB6FB22BDBF46400AE45F3 /* ChooseRightAnswersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */; };
-		3EC8AC4C2BE25D5A0097E262 /* WordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8AC4B2BE25D5A0097E262 /* WordPair.swift */; };
 		3EC8AC4E2BE295620097E262 /* MatchBlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8AC4D2BE295620097E262 /* MatchBlocksViewController.swift */; };
+		3EC8AC502BE2E1440097E262 /* LeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8AC4F2BE2E1440097E262 /* LeftTableViewCell.swift */; };
 		3ED7504A2BD7F74000430F7B /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED750492BD7F74000430F7B /* HintView.swift */; };
 		3ED7504C2BD84ED200430F7B /* FillGapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */; };
 		3ED7504E2BD858E100430F7B /* LiqueurScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */; };
@@ -61,8 +61,8 @@
 		3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrderCell.swift; sourceTree = "<group>"; };
 		3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRightAnswersViewController.swift; sourceTree = "<group>"; };
 		3EBB6FB12BDBF46400AE45F3 /* ChooseRightAnswersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRightAnswersCell.swift; sourceTree = "<group>"; };
-		3EC8AC4B2BE25D5A0097E262 /* WordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPair.swift; sourceTree = "<group>"; };
 		3EC8AC4D2BE295620097E262 /* MatchBlocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchBlocksViewController.swift; sourceTree = "<group>"; };
+		3EC8AC4F2BE2E1440097E262 /* LeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftTableViewCell.swift; sourceTree = "<group>"; };
 		3ED750492BD7F74000430F7B /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		3ED7504B2BD84ED200430F7B /* FillGapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapsViewController.swift; sourceTree = "<group>"; };
 		3ED7504D2BD858E100430F7B /* LiqueurScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqueurScaleViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				3E7F5ECC2BAA16120018BCEF /* ProfileViewController.swift */,
 				3E7F5ED42BAA48F10018BCEF /* PreviousTestsLIst.swift */,
 				3E97BFA82BD54DD600CF3A7F /* HeaderView.swift */,
-				3EC8AC4B2BE25D5A0097E262 /* WordPair.swift */,
+				3EC8AC4F2BE2E1440097E262 /* LeftTableViewCell.swift */,
 			);
 			path = uir;
 			sourceTree = "<group>";
@@ -221,7 +221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E7F5ED32BAA24170018BCEF /* Extensions.swift in Sources */,
-				3EC8AC4C2BE25D5A0097E262 /* WordPair.swift in Sources */,
 				3ED750502BD864D900430F7B /* LiqueurCell.swift in Sources */,
 				3ED7504A2BD7F74000430F7B /* HintView.swift in Sources */,
 				3E7F5ECD2BAA16120018BCEF /* ProfileViewController.swift in Sources */,
@@ -232,6 +231,7 @@
 				3E97BFA72BD54A7D00CF3A7F /* BlockUIView.swift in Sources */,
 				3E7F5ED52BAA48F10018BCEF /* PreviousTestsLIst.swift in Sources */,
 				3EBB6FAC2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift in Sources */,
+				3EC8AC502BE2E1440097E262 /* LeftTableViewCell.swift in Sources */,
 				3ED7504C2BD84ED200430F7B /* FillGapsViewController.swift in Sources */,
 				3EBB6FB02BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift in Sources */,
 				3EC8AC4E2BE295620097E262 /* MatchBlocksViewController.swift in Sources */,

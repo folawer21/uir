@@ -9,7 +9,7 @@ import UIKit
 
 
 final class MatchBlocksViewController: UIViewController{
-    private let russianWords = ["Кошка", "Собака", "Дом", "Машина","Магазин","Кровать","Друг","Колесо"]
+    private let russianWords = ["Кошка", "Собака", "Дом", "Машина","Магазин","Кровать","Друг","Колесо","Машина","Магазин","Кровать","Друг","Колесо"]
     private var englishWords = ["Cat", "Dog", "House", "Car","Shop","bed","Friend","Wheel"]
     private let headerLabel = {
         let label = UILabel()
@@ -159,7 +159,7 @@ final class MatchBlocksViewController: UIViewController{
         self.view.backgroundColor = .white
         leftTableView.dataSource = self
         leftTableView.delegate = self
-        leftTableView.register(UITableViewCell.self, forCellReuseIdentifier: "RussianCell")
+        leftTableView.register(LeftTableViewCell.self, forCellReuseIdentifier: "LeftTableViewCell")
         
         
         rightTableView.dataSource = self
@@ -190,23 +190,19 @@ final class MatchBlocksViewController: UIViewController{
 
 extension MatchBlocksViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as? ImageOrderCell else{
-//            return UITableViewCell()
-//        }
-//
-//        cell.configCell(imageName: arr[indexPath.row])
-//      
-//        return cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableView == leftTableView ? "RussianCell" : "EnglishCell", for: indexPath)
-        
-        if tableView == leftTableView {
-            cell.textLabel?.text = russianWords[indexPath.row]
-        } else {
+
+        if tableView == leftTableView{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeftTableViewCell", for: indexPath) as? LeftTableViewCell else {
+                return UITableViewCell()}
+            cell.configCell(number: indexPath.row, cellText: russianWords[indexPath.row])
+            return cell
+        }else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EnglishCell", for: indexPath) as? UITableViewCell else {
+                return UITableViewCell()}
             cell.textLabel?.text = englishWords[indexPath.row]
+            return cell
         }
-        
-        return cell
+       
     }
     
    
