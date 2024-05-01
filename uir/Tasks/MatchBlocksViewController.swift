@@ -9,7 +9,7 @@ import UIKit
 
 
 final class MatchBlocksViewController: UIViewController{
-    private let russianWords = ["Кошка", "Собака", "Дом", "Машина","Магазин","Кровать","Друг","Колесо","Машина","Магазин","Кровать","Друг","Колесо"]
+    private let russianWords = ["Статические прикладные ИЭС", "Динамические прикладные ИЭС", "Дом", "Машина","Магазин","Кровать","Друг","Колесо","Машина","Магазин","Кровать","Друг","Колесо"]
     private var englishWords = ["Cat", "Dog", "House", "Car","Shop","bed","Friend","Wheel"]
     private let headerLabel = {
         let label = UILabel()
@@ -164,9 +164,13 @@ final class MatchBlocksViewController: UIViewController{
         
         rightTableView.dataSource = self
         rightTableView.delegate = self
-        rightTableView.register(UITableViewCell.self, forCellReuseIdentifier: "EnglishCell")
-        rightTableView.isEditing = true
+        rightTableView.register(RightTableViewCell.self, forCellReuseIdentifier: "RightTableViewCell")
+//        rightTableView.isEditing = true
+        leftTableView.backgroundColor = .blueForViews
+        rightTableView.backgroundColor = .blueForViews
         
+        leftTableView.layer.cornerRadius = 10
+        rightTableView.layer.cornerRadius = 10
         configViews()
         addTargets()
         addSubViews()
@@ -197,9 +201,9 @@ extension MatchBlocksViewController: UITableViewDataSource{
             cell.configCell(number: indexPath.row, cellText: russianWords[indexPath.row])
             return cell
         }else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EnglishCell", for: indexPath) as? UITableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightTableViewCell", for: indexPath) as? RightTableViewCell else {
                 return UITableViewCell()}
-            cell.textLabel?.text = englishWords[indexPath.row]
+            cell.configCell(text: englishWords[indexPath.row])
             return cell
         }
        
@@ -225,34 +229,34 @@ extension MatchBlocksViewController: UITableViewDelegate{
         return 100
     }
     
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//    
+//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        if tableView == rightTableView {
+//            let removedElement = englishWords.remove(at: sourceIndexPath.row)
+//            englishWords.insert(removedElement, at: destinationIndexPath.row)
+//        }
+//
+//    }
     
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        if tableView == rightTableView {
-            let removedElement = englishWords.remove(at: sourceIndexPath.row)
-            englishWords.insert(removedElement, at: destinationIndexPath.row)
-        }
-
-    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .none
+//    }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, editingActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if tableView == rightTableView {
-            let moveAction = UITableViewRowAction(style: .normal, title: "Переместить") { (action, indexPath) in
-                // Выполнить действие перемещения
-                
-            }
-            
-            return [moveAction]
-        }else{
-            return nil
-        }
-    }
+//    func tableView(_ tableView: UITableView, editingActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        if tableView == rightTableView {
+//            let moveAction = UITableViewRowAction(style: .normal, title: "Переместить") { (action, indexPath) in
+//                // Выполнить действие перемещения
+//                
+//            }
+//            
+//            return [moveAction]
+//        }else{
+//            return nil
+//        }
+//    }
     
 
 

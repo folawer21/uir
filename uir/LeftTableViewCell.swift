@@ -9,8 +9,8 @@ import UIKit
 
 final class LeftTableViewCell: UITableViewCell{
     
-    var number: Int = 0
-    var numberLabel1: UILabel = {
+    private var number: Int = 0
+    private var numberLabel1: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = .systemFont(ofSize: 18)
@@ -19,7 +19,7 @@ final class LeftTableViewCell: UITableViewCell{
    
         return label
     }()
-    var taskLabel: UILabel = {
+    private var taskLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = .systemFont(ofSize: 16)
@@ -33,6 +33,7 @@ final class LeftTableViewCell: UITableViewCell{
     func configCell(number:Int,cellText: String){
         numberLabel1.text = "\(number)"
         taskLabel.text = cellText
+        contentView.layer.backgroundColor = UIColor(named: "blueForViews")?.cgColor
         addViews()
         applyConstraints()
     }
