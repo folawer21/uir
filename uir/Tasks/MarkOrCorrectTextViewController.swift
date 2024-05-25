@@ -8,6 +8,7 @@
 import UIKit
 
 final class MarkOrCorrectTextViewController: UIViewController{
+    weak var delegate: TaskViewController?
     // MARK: Подсказка
     let hintView: HintView
     //MARK: Блоки
@@ -81,8 +82,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
 //        mistakesLabel.translatesAutoresizingMaskIntoConstraints = false
 //        return mistakesLabel
 //    }()
-    private var numberOfMistakes: Int
-    private var hint: String
+
 //    private let hintLabel: UILabel = {
 //        var hintLabel = UILabel()
 //        hintLabel.text = "Подсказка: "
@@ -129,10 +129,16 @@ final class MarkOrCorrectTextViewController: UIViewController{
 //    }
     @objc
     private func sendButtonTapped(){
-        let alert = UIAlertController()
-        alert.message = (answerTextField.text == "True" ? "Верно" : "Ошибка")
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-        present(alert, animated: true)
+        //TODO: проверка через сервер
+        if 1==1{
+            navigationController?.popViewController(animated: true)
+            delegate?.fetchNextTask()
+        }else{
+            let alert = UIAlertController()
+            alert.message = ("Ошибка")
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
 //    @objc
@@ -147,17 +153,18 @@ final class MarkOrCorrectTextViewController: UIViewController{
     //MARK: Init
     init(taskText: String, mistakes: Int,hint: String ) {
         self.givenTextLabel.text = "Условие задачи "
-        self.numberOfMistakes = mistakes
-        self.hint = hint
-        //Убрать переменные подсказки и ошибок
         self.hintView = HintView(frame: .zero, mistakes: mistakes, hint: hint)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(data: MarkOrCorrectTask){
+        self.givenTextLabel.text = data.text
+        self.hintView = HintView(frame: .zero, mistakes: data.errorAmount, hint: data.hint)
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         self.givenTextLabel.text = ""
-        self.numberOfMistakes = 0
-        self.hint = ""
         self.hintView = HintView(frame: .zero, mistakes: 0, hint: "")
         super.init(coder: coder)
     }
@@ -264,6 +271,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
             sendButton.topAnchor.constraint(equalTo: answerBlock.bottomAnchor, constant: buttonIndent),
             sendButton.heightAnchor.constraint(equalToConstant: sendButtonHeight),
             sendButton.widthAnchor.constraint(equalToConstant: buttonWidth),
+            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             
             hintButton.leadingAnchor.constraint(equalTo: sendButton.trailingAnchor,constant: headerHeight),
             hintButton.widthAnchor.constraint(equalToConstant: hintButtonSize),

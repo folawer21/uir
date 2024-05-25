@@ -9,8 +9,9 @@ import UIKit
 
 
 final class MatchBlocksViewController: UIViewController{
-    private let russianWords = ["Статические прикладные ИЭС", "Динамические прикладные ИЭС", "Дом", "Машина","Магазин","Кровать","Друг","Колесо","Машина","Магазин","Кровать","Друг","Колесо"]
-    private var englishWords = ["Cat", "Dog", "House", "Car","Shop","bed","Friend","Wheel"]
+    weak var delegate: TaskViewController?
+    private let leftTable: [String]
+    private var rightTable: [String]
     private let headerLabel = {
         let label = UILabel()
         label.textColor = .black
@@ -57,6 +58,7 @@ final class MatchBlocksViewController: UIViewController{
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
+        label.text = "Установите соответствие"
         label.frame = CGRect(x: 0, y: 0, width: label.bounds.size.width, height: label.bounds.size.height)
         label.font = .systemFont(ofSize: 16)
         label.numberOfLines = 0
@@ -65,10 +67,16 @@ final class MatchBlocksViewController: UIViewController{
     }()
     
     @objc private func sendButtonTapped(){
-        let alert = UIAlertController()
-        alert.message = "True" == "False" ? "Верно" : "Ошибка"
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-        present(alert, animated: true)
+        //TODO: проверка через сервер
+        if 1==1{
+            navigationController?.popViewController(animated: true)
+            delegate?.fetchNextTask()
+        }else{
+            let alert = UIAlertController()
+            alert.message = ("Ошибка")
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
     private func configViews(){
@@ -100,7 +108,7 @@ final class MatchBlocksViewController: UIViewController{
 
         let headerWidth = blockWidth / 2.5
         let headerHeight = CGFloat(36)
-        let smallBlockIndent = CGFloat(30)
+        let smallBlockIndent = CGFloat(20)
         let bigBlockIndent = CGFloat(35)
         let buttonIndent = bigBlockIndent - 5
         
@@ -133,7 +141,7 @@ final class MatchBlocksViewController: UIViewController{
             
             
             
-            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             sendButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             sendButton.heightAnchor.constraint(equalToConstant: sendButtonHeight),
             sendButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -157,17 +165,18 @@ final class MatchBlocksViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        leftTableView.rowHeight = UITableView.automaticDimension
+        leftTableView.estimatedRowHeight = 30
         leftTableView.dataSource = self
         leftTableView.delegate = self
         leftTableView.register(LeftTableViewCell.self, forCellReuseIdentifier: "LeftTableViewCell")
         
-        
+        rightTableView.rowHeight = UITableView.automaticDimension
+        rightTableView.estimatedRowHeight = 30
         rightTableView.dataSource = self
         rightTableView.delegate = self
         rightTableView.register(RightTableViewCell.self, forCellReuseIdentifier: "RightTableViewCell")
 //        rightTableView.isEditing = true
-        leftTableView.backgroundColor = .blueForViews
-        rightTableView.backgroundColor = .blueForViews
         
         leftTableView.layer.cornerRadius = 10
         rightTableView.layer.cornerRadius = 10
@@ -181,13 +190,21 @@ final class MatchBlocksViewController: UIViewController{
        self.leftTableView.frame = CGRect.init(origin: .zero, size: size)
     }
     
-    init(task: String){
-        givenLabel.text = task
+    init(task: String, left: [String], right: [String]){
+        leftTable = left
+        rightTable = right
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(data:MatchBlocksTask ){
+        leftTable = data.leftTable
+        rightTable = data.rightTable
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        givenLabel.text = ""
+        leftTable = []
+        rightTable = []
         super.init(coder: coder)
     }
 }
@@ -198,12 +215,12 @@ extension MatchBlocksViewController: UITableViewDataSource{
         if tableView == leftTableView{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeftTableViewCell", for: indexPath) as? LeftTableViewCell else {
                 return UITableViewCell()}
-            cell.configCell(number: indexPath.row, cellText: russianWords[indexPath.row])
+            cell.configCell(number: indexPath.row, cellText: leftTable[indexPath.row])
             return cell
         }else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightTableViewCell", for: indexPath) as? RightTableViewCell else {
                 return UITableViewCell()}
-            cell.configCell(text: englishWords[indexPath.row])
+            cell.configCell(text: rightTable[indexPath.row])
             return cell
         }
        
@@ -211,11 +228,10 @@ extension MatchBlocksViewController: UITableViewDataSource{
     
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return arr.count
         if tableView == leftTableView {
-            return russianWords.count
+            return leftTable.count
         } else {
-            return englishWords.count
+            return rightTable.count
         }
     }
     
@@ -225,10 +241,10 @@ extension MatchBlocksViewController: UITableViewDataSource{
 
 
 extension MatchBlocksViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
+//    
 //    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
 //        return true
 //    }

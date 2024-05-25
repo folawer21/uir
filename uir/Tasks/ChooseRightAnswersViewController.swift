@@ -9,7 +9,8 @@
 import UIKit
 
 final class ChooseRightAnswersViewController: UIViewController{
-    fileprivate let inputArr = ["123","13","1413","4143","1535","51351235","53521541","41341","413341","153531315","1345351235","1535135135513"]
+    weak var delegate: TaskViewController?
+    private let inputArr: [String]
     private var outputArr: [String]  = []
     private let tableView = {
         let tableView = UITableView()
@@ -51,10 +52,16 @@ final class ChooseRightAnswersViewController: UIViewController{
         return button
     }()
     @objc private func sendButtonTapped(){
-        let alert = UIAlertController()
-        alert.message = "True" == "False" ? "Верно" : "Ошибка"
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-        present(alert, animated: true)
+        //TODO: проверка через сервер
+        if 1==1{
+            navigationController?.popViewController(animated: true)
+            delegate?.fetchNextTask()
+        }else{
+            let alert = UIAlertController()
+            alert.message = ("Ошибка")
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     private func configViews(){
         blockView.blockView(radious: 20)
@@ -109,7 +116,7 @@ final class ChooseRightAnswersViewController: UIViewController{
             tableView.widthAnchor.constraint(equalToConstant: blockWidth),
             tableView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: -15),
             
-            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             sendButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             sendButton.heightAnchor.constraint(equalToConstant: sendButtonHeight),
             sendButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -132,12 +139,20 @@ final class ChooseRightAnswersViewController: UIViewController{
     
     init(task:String) {
         givenLabel.text = task
+        inputArr = []
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(data: ChooseRightTask){
+        givenLabel.text = data.task
+        inputArr = data.answers
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
         givenLabel.text = ""
+        inputArr = []
+        super.init(coder: coder)
     }
     
     
@@ -190,7 +205,6 @@ extension ChooseRightAnswersViewController: UITableViewDelegate{
         else{
             outputArr.removeAll(where: {$0 == inputArr[indexPath.row]})
         }
-        print(outputArr)
     }
 }
 

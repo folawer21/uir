@@ -29,4 +29,7 @@ final class TokenStorage{
             }
         }
     }
+    func setNil(){
+        token = nil
+    }
 }

@@ -46,8 +46,9 @@ final class SplashScreenViewController: UIViewController{
     }
     
     func switchScreen(){
+        
         if tokenStorage.token != nil{
-            switchToTabBar()
+            fetchTasks(tokenStorage.token!)
         }else{
             switchToAuthController()
         }

@@ -6,9 +6,7 @@
 //
 
 import Foundation
-struct UTZList: Codable{
-    let utzList: [UTZList]
-}
+
 struct UTZTask:Codable{
     let id: Int
     let taskType: String

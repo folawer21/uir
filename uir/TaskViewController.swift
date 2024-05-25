@@ -30,35 +30,47 @@ final class TaskViewController: UIViewController{
     }
     @objc private func startButtonTapped(){
         UIBlockingProgressHUD.show()
-        helper.buttonTapped()
+        helper.fetchNext()
     }
-//    func enableButton(){
-//        startButton.isEnabled = true
-//    }
-//    func disableButton(){
-//        startButton.isEnabled = false
-//    }
+    func fetchNextTask(){
+        helper.removeTask()
+        helper.fetchNext()
+    }
+    
+    func showWellDoneAlert(){
+        UIBlockingProgressHUD.dissmiss()
+        let alert = UIAlertController(title: "Поздравляем!", message: "Вы успешно завершили все УТЗ", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+        present(alert,animated: true)
+    }
+    
     func showMarkOrCorrectVC(data: MarkOrCorrectTask){
         //TODO: Конструкток из структуры
-        let vc = MarkOrCorrectTextViewController(taskText: "test", mistakes: 1, hint: "bebebe")
+        let vc = MarkOrCorrectTextViewController(data: data)
+        vc.delegate = self
         UIBlockingProgressHUD.dissmiss()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func showFillGapsVC(data: FillGapsTask){
         //TODO: Конструкток из структуры
-        let vc = FillGapsViewController(taskText: "test", mistakes: 1, hint: "bebebe")
+        let vc = FillGapsViewController(data: data)
+        vc.delegate = self
+//        vc.modalPresentationStyle = .fullScreen
         UIBlockingProgressHUD.dissmiss()
         self.navigationController?.pushViewController(vc, animated: true)
+//        present(vc, animated: true)
     }
     func showChooseRightVC(data: ChooseRightTask){
         //TODO: Конструкток из структуры
-        let vc = ChooseRightAnswersViewController(task: "bebebebbe")
+        let vc = ChooseRightAnswersViewController(data: data)
+        vc.delegate = self
         UIBlockingProgressHUD.dissmiss()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func showMatchBlocksVC(data: MatchBlocksTask){
         //TODO: Конструкток из структуры
-        let vc = MatchBlocksViewController(task: "Besafsa")
+        let vc = MatchBlocksViewController(data: data)
+        vc.delegate = self
         UIBlockingProgressHUD.dissmiss()
         self.navigationController?.pushViewController(vc, animated: true)
     }

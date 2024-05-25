@@ -5,9 +5,11 @@
 //  Created by Александр  Сухинин on 23.04.2024.
 //
 
+//TODO: ScrollView воткнуть мб?????? или все поднять
 import UIKit
 
 final class FillGapsViewController: UIViewController{
+    weak var delegate: TaskViewController?
     // MARK: Подсказка
     let hintView: HintView
     //MARK: Блоки
@@ -69,13 +71,11 @@ final class FillGapsViewController: UIViewController{
         textView.backgroundColor = UIColor(named: "blueForViews")
         textView.textColor = .black
         textView.layer.cornerRadius = 5.0
-        textView.text = "Введите пропущенное значение"
+        textView.text = "Введите пропущенное значение здесь..."
         return textView
 
     }()
 
-    private var numberOfMistakes: Int
-    private var hint: String
 
     private let sendButton: UIButton = {
         var button = UIButton()
@@ -105,28 +105,34 @@ final class FillGapsViewController: UIViewController{
         configHintView()
         hintView.show()
     }
+   
 
     @objc
     private func sendButtonTapped(){
-        let alert = UIAlertController()
-        alert.message = (answerTextField.text == "True" ? "Верно" : "Ошибка")
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-        present(alert, animated: true)
+        //TODO: проверка через сервер
+        if 1==1{
+            navigationController?.popViewController(animated: true)
+            delegate?.fetchNextTask()
+        }else{
+            let alert = UIAlertController()
+            alert.message = (answerTextField.text == "True" ? "Верно" : "Ошибка")
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     //MARK: Init
     init(taskText: String, mistakes: Int,hint: String ) {
         self.givenTextLabel.text = "Условие задачи "
-        self.numberOfMistakes = mistakes
-        self.hint = hint
-        //Убрать переменные подсказки и ошибок
         self.hintView = HintView(frame: .zero, mistakes: mistakes, hint: hint)
         super.init(nibName: nil, bundle: nil)
     }
-    
+    init(data: FillGapsTask){
+        self.givenTextLabel.text = data.text
+        self.hintView = HintView(frame: .zero, mistakes: 0, hint: data.hint)
+        super.init(nibName: nil, bundle: nil)
+    }
     required init?(coder: NSCoder) {
         self.givenTextLabel.text = ""
-        self.numberOfMistakes = 0
-        self.hint = ""
         self.hintView = HintView(frame: .zero, mistakes: 0, hint: "")
         super.init(coder: coder)
     }
@@ -153,10 +159,8 @@ final class FillGapsViewController: UIViewController{
     func addActions(){
         hintButton.addTarget(self, action: #selector(infoButtonTappedUp), for: .touchUpInside)
         hintButton.addTarget(self, action: #selector(infoButtonDown), for: .touchDown)
-        
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
     }
-    
     func addViews(){
         view.addSubview(headerTaskBlock)
         view.addSubview(headerGivenBlock)
@@ -279,7 +283,7 @@ final class FillGapsViewController: UIViewController{
 
 extension FillGapsViewController: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Введите ответ здесь..."
+        if textView.text == "Введите пропущенное значение здесь..."
         {
             textView.text = ""
         }

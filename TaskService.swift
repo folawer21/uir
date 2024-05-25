@@ -17,11 +17,21 @@ final class TasksService{
     
     private func makeUTZUrlRequest(id: Int,type: String) -> URLRequest?{
         //TODO: Обработать добавление id в ссылку или куда
-        guard let url = URL(string: "http://79.174.80.180:9000/api/" + type ) else {return nil}
+        guard let url = URL(string: Configuration.test.defaultBaseURL + "/api/\(type)") else {return nil}
+        print(url)
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "GET"
-        urlRequest.addValue("Bearer \(tokenStorage.token)", forHTTPHeaderField: "Authorization")
-        return urlRequest
+        let userData = ["id" : id]
+        do{
+            let jsonData = try JSONSerialization.data(withJSONObject: userData, options: [])
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("Bearer \(tokenStorage.token)", forHTTPHeaderField: "Authorization")
+            urlRequest.httpBody = jsonData
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            return urlRequest
+        }catch{
+            print("Error converting data to JSON: \(error)")
+            return nil
+        }
     }
     
     func fetchUTZ<T: Codable>(id: Int,type:String,completion: @escaping(Result<T,Error>) -> Void){

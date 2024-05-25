@@ -9,27 +9,65 @@ import Foundation
 //protocol TaskTypeProtocol {}
 
 struct MarkOrCorrectTask:Codable{
+    let id: Int
+    let text: String
+    let errorAmount: Int
+    let hint: String
     
+    enum CodingKeys: String,CodingKey{
+        case id
+        case text = "text_with_error"
+        case errorAmount = "amount_error"
+        case hint
+    }
 }
 struct FillGapsTask:Codable{
-    
+    let id: Int
+    let text: String
+    let hint: String
+    enum CodingKeys: String,CodingKey{
+        case id
+        case text = "text_with_error"
+        case hint
+    }
 }
 struct ChooseRightTask:Codable{
-    
+    let id: Int
+    let task: String
+    let answers: [String]
 }
+
 struct MatchBlocksTask:Codable{
-    
+    let id: Int
+    let leftTable: [String]
+    let rightTable: [String]
+    enum CodingKeys: String,CodingKey{
+        case id
+        case leftTable = "left_table"
+        case rightTable = "right_table"
+    }
 }
 struct PhotoOrderTask:Codable{
-    
+    let id: Int
+    let photosUrls: [String]
+    enum CodingKeys: String,CodingKey{
+        case id
+        case photosUrls = "photos_urls"
+      
+    }
 }
 
 final class TaskViewControllerHelper{
     let storage = TasksStorage.shared
     let service = TasksService()
     weak var viewController: TaskViewController?
-    func buttonTapped(){
+    
+    func removeTask(){
+        storage.removeLast()
+    }
+    func fetchNext(){
         guard let task = storage.getNext() else{
+            viewController?.showWellDoneAlert()
             print("storage is empty")
             return
         }
