@@ -1,0 +1,154 @@
+//
+//  TaskViewContollerHelper.swift
+//  uir
+//
+//  Created by Александр  Сухинин on 25.05.2024.
+//
+import Foundation
+//TODO: добавить current task
+//protocol TaskTypeProtocol {}
+
+struct MarkOrCorrectTask:Codable{
+    
+}
+struct FillGapsTask:Codable{
+    
+}
+struct ChooseRightTask:Codable{
+    
+}
+struct MatchBlocksTask:Codable{
+    
+}
+struct PhotoOrderTask:Codable{
+    
+}
+
+final class TaskViewControllerHelper{
+    let storage = TasksStorage()
+    let service = TasksService()
+    weak var viewController: TaskViewController?
+    func buttonTapped(){
+        guard let task = storage.getNext() else{
+            print("storage is empty")
+            return
+        }
+        let id = task.id
+        let taskType = task.taskType
+        switch taskType{
+        case "MarkOrCorrect":
+            service.fetchUTZ(id: id){ [weak self] (result: Result<MarkOrCorrectTask,Error>) in
+                guard let self = self else {
+                    print("[TaskViewControllerHelper]: self is nil")
+                    return}
+                switch result{
+                    case .success(let task):
+                        self.viewController?.showMarkOrCorrectVC(data: task)
+                case .failure(let error):
+                    print("[TaskViewControllerHelper]: error")
+                    return
+                }
+            }
+        case "FillGaps":
+            service.fetchUTZ(id: id){ [weak self] (result: Result<FillGapsTask,Error>) in
+                guard let self = self else {
+                    print("[TaskViewControllerHelper]: self is nil")
+                    return}
+                switch result{
+                    case .success(let task):
+                        self.viewController?.showFillGapsVC(data: task)
+                case .failure(let error):
+                    print("[TaskViewControllerHelper]: error")
+                    return
+                }
+            }
+        case "ChooseRight":
+            service.fetchUTZ(id: id){ [weak self] (result: Result<ChooseRightTask,Error>) in
+                guard let self = self else {
+                    print("[TaskViewControllerHelper]: self is nil")
+                    return}
+                switch result{
+                    case .success(let task):
+                        self.viewController?.showChooseRightVC(data: task)
+                case .failure(let error):
+                    print("[TaskViewControllerHelper]: error")
+                    return
+                }
+            }
+        case "MatchBlocks":
+            service.fetchUTZ(id: id){ [weak self] (result: Result<MatchBlocksTask,Error>) in
+                guard let self = self else {
+                    print("[TaskViewControllerHelper]: self is nil")
+                    return}
+                switch result{
+                    case .success(let task):
+                        self.viewController?.showMatchBlocksVC(data: task)
+                case .failure(let error):
+                    print("[TaskViewControllerHelper]: error")
+                    return
+                }
+            }
+        case "PhotoOrder":
+            service.fetchUTZ(id: id){ [weak self] (result: Result<PhotoOrderTask,Error>) in
+                guard let self = self else {
+                    print("[TaskViewControllerHelper]: self is nil")
+                    return}
+                switch result{
+                    case .success(let task):
+                        self.viewController?.showPhotoOrderVC(data: task)
+                case .failure(let error):
+                    print("[TaskViewControllerHelper]: error")
+                    return
+                }
+            }
+        default:
+            print("Error: Undefined type")
+            return
+        }
+       
+    }
+//    func buttonTapped(){
+//        guard let task = storage.getNext() else{
+//            print("storage is empty")
+//            return
+//        }
+//        let id = task.id
+//        let taskType = task.taskType
+//        var typeToFetch: TaskType
+//        switch taskType{
+//        case "MarkOrCorrect":
+//            typeToFetch = .markOrCorrect
+//        case "FillGaps":
+//            typeToFetch = .fillGaps
+//        case "ChooseRight":
+//            typeToFetch = .chooseRight
+//        case "MatchBlocks":
+//            typeToFetch = .matchBlocks
+//        case "PhotoOrder":
+//            typeToFetch = .photoOrder
+//        default:
+//            print("Error: Undefiend UTZ TYPE")
+//            return
+//        }
+//        guard let taskTypeClass = taskTypeMapping[typeToFetch] else {
+//               print("Unknown task type")
+//               return
+//        }
+//        
+//        fetchTask(id: id, taskTypeClass: taskTypeClass)
+//
+//    }
+//    func fetchTask<T: TaskTypeProtocol>(id: Int, taskTypeClass: T.Type) {
+//        fetchUTZ(id: id, type: taskTypeClass) { result in
+//            switch result {
+//            case .success(let task):
+//                
+//            case .failure(let error):
+//                print("Error fetching task: \(error)")
+//            }
+//        }
+//    }
+//    func fetchUTZ<T: TaskTypeProtocol>(id: Int, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+//        
+//    }
+}

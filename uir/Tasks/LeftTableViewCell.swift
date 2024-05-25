@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//TODO: СДЕЛАТЬ TEXTVIEW а не UILABEL везде постараться где большие тексты
 final class LeftTableViewCell: UITableViewCell{
     
     private var number: Int = 0
@@ -19,11 +19,11 @@ final class LeftTableViewCell: UITableViewCell{
    
         return label
     }()
-    private var taskLabel: UILabel = {
-        let label = UILabel()
+    private var taskLabel: UITextView = {
+        let label = UITextView()
         label.textColor = .black
         label.font = .systemFont(ofSize: 16)
-        label.numberOfLines = 0
+//        label.numberOfLines = 0
         label.textAlignment = .left
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false

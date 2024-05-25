@@ -8,10 +8,10 @@
 import UIKit
 
 final class RightTableViewCell: UITableViewCell{
-    private let answerLabel: UILabel = {
-        let label = UILabel()
+    private let answerLabel: UITextView = {
+        let label = UITextView()
         label.textColor = .black
-        label.numberOfLines = 0
+//        label.numberOfLines = 0
         label.sizeToFit()
         label.font = .systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -10,13 +10,15 @@ import UIKit
 final class SplashScreenViewController: UIViewController{
     let isAuthenticated = true
     let imageView = UIImageView()
+    let tokenStorage = TokenStorage()
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        switchScreen()
+    }
     override func viewDidLoad() {
         configScreen()
         switchScreen()
-        
-        
     }
     
     func configScreen(){
@@ -65,6 +67,22 @@ final class SplashScreenViewController: UIViewController{
             return
         }
         let authViewController = AuthViewController()
-        window.rootViewController = authViewController
+        authViewController.delegate = self
+        let authNavigationController = UINavigationController(rootViewController: authViewController)
+        authViewController.modalPresentationStyle = .fullScreen
+        present(authNavigationController,animated: true)
+    }
+}
+extension SplashScreenViewController:AuthViewControllerDelegate{
+    func authViewController(_ vc: AuthViewController,didAuthenticateWithToken token: String) {
+        dismiss(animated: true){ [weak self] in
+            guard let self = self else {return}
+            self.tokenStorage.token = token
+            self.fetchTasks(token)
+        }
+    }
+    
+    private func fetchTasks(_ token: String){
+        
     }
 }

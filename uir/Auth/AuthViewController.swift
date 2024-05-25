@@ -8,11 +8,12 @@
 import UIKit
 
 final class AuthViewController: UIViewController{
-    
+    let authHelper = AuthHelper()
+    var delegate : SplashScreenViewController?
     let authLabel = UILabel()
     let loginButton = UIButton()
-    let loginInputLabel = UITextField()
-    let passwordInputLabel = UITextField()
+    private let loginInputLabel = UITextField()
+    private let passwordInputLabel = UITextField()
     let borderView = UIView()
     let authTextView = UIView()
     let logoView = UIImageView()
@@ -150,19 +151,33 @@ final class AuthViewController: UIViewController{
         addSubViews()
         activateConstraints()
         
+        authHelper.viewController = self
     }
     
     @objc
     func loginButtonTapped(){
-        print(2)
-    }
-    
-    func switchToTabBar(){
-        guard let window = UIApplication.shared.windows.first else {
-            assertionFailure("Invalid window configuration")
+        guard let login = getLogin(), let password = getPassword() else{
+            showAlert()
             return
         }
-        let tabBarController = TabBarController()
-        window.rootViewController = tabBarController
+        authHelper.auth(login: login, password: password)
+    }
+    func successAuth(_ token: String){
+        delegate?.authViewController(self, didAuthenticateWithToken: token)
+    }
+    
+    func getLogin() -> String?{
+        return self.loginInputLabel.text
+    }
+    
+    func getPassword() -> String?{
+        return self.passwordInputLabel.text
+    }
+    func showAlert(){
+        let alert = UIAlertController(title: "Неправильные данные", message: "Проверьте введенные данные и попробуйте снова", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
 }
+
+

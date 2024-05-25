@@ -14,11 +14,13 @@ final class TabBarController: UITabBarController{
         
         let taskViewController = TaskViewController()
         taskViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "book.pages"), selectedImage: nil)
+        let taskNav = UINavigationController(rootViewController: taskViewController)
         
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "person.crop.circle"), selectedImage: nil)
+        let profileNav = UINavigationController(rootViewController: profileViewController)
         
-        self.viewControllers = [taskViewController,profileViewController]
+        self.viewControllers = [taskNav,profileNav]
     }
     
     override func viewDidLoad() {
