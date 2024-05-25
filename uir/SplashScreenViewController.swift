@@ -8,10 +8,11 @@
 import UIKit
 
 final class SplashScreenViewController: UIViewController{
-    let isAuthenticated = true
+//    let isAuthenticated = true
     let imageView = UIImageView()
     let tokenStorage = TokenStorage()
-    
+    let tasksStorage = TasksStorage.shared
+    let tasksService = TaskListService()
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         switchScreen()
@@ -45,7 +46,7 @@ final class SplashScreenViewController: UIViewController{
     }
     
     func switchScreen(){
-        if isAuthenticated{
+        if tokenStorage.token != nil{
             switchToTabBar()
         }else{
             switchToAuthController()
@@ -83,6 +84,15 @@ extension SplashScreenViewController:AuthViewControllerDelegate{
     }
     
     private func fetchTasks(_ token: String){
-        
+        tasksService.fetchTaskList(token: token){ [weak self] result in
+            guard let self = self else {return }
+            switch result{
+            case .success(let list):
+                self.tasksStorage.tasks = list
+                self.switchToTabBar()
+            case .failure(let error):
+                print("[fetchTasks]: SplashScreen : ",error)
+            }
+        }
     }
 }

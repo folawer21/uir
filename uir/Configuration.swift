@@ -7,9 +7,9 @@
 
 import Foundation
 struct Configuration{
-    let defaultBaseURL: URL
+    let defaultBaseURL: String
     let authURLString: String
     static var test: Configuration{
-        return Configuration(defaultBaseURL: URL(string: "api/sasha/test")!, authURLString: "api/sashs/auth")
+        return Configuration(defaultBaseURL:  "http://79.174.80.180:9000", authURLString: "/api/auth")
     }
 }

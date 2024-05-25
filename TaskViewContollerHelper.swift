@@ -25,7 +25,7 @@ struct PhotoOrderTask:Codable{
 }
 
 final class TaskViewControllerHelper{
-    let storage = TasksStorage()
+    let storage = TasksStorage.shared
     let service = TasksService()
     weak var viewController: TaskViewController?
     func buttonTapped(){
@@ -37,7 +37,7 @@ final class TaskViewControllerHelper{
         let taskType = task.taskType
         switch taskType{
         case "MarkOrCorrect":
-            service.fetchUTZ(id: id){ [weak self] (result: Result<MarkOrCorrectTask,Error>) in
+            service.fetchUTZ(id: id, type: "MarkOrCorrect"){ [weak self] (result: Result<MarkOrCorrectTask,Error>) in
                 guard let self = self else {
                     print("[TaskViewControllerHelper]: self is nil")
                     return}
@@ -50,7 +50,7 @@ final class TaskViewControllerHelper{
                 }
             }
         case "FillGaps":
-            service.fetchUTZ(id: id){ [weak self] (result: Result<FillGapsTask,Error>) in
+            service.fetchUTZ(id: id, type: "FillGaps"){ [weak self] (result: Result<FillGapsTask,Error>) in
                 guard let self = self else {
                     print("[TaskViewControllerHelper]: self is nil")
                     return}
@@ -63,7 +63,7 @@ final class TaskViewControllerHelper{
                 }
             }
         case "ChooseRight":
-            service.fetchUTZ(id: id){ [weak self] (result: Result<ChooseRightTask,Error>) in
+            service.fetchUTZ(id: id,type: "ChooseRight"){ [weak self] (result: Result<ChooseRightTask,Error>) in
                 guard let self = self else {
                     print("[TaskViewControllerHelper]: self is nil")
                     return}
@@ -76,7 +76,7 @@ final class TaskViewControllerHelper{
                 }
             }
         case "MatchBlocks":
-            service.fetchUTZ(id: id){ [weak self] (result: Result<MatchBlocksTask,Error>) in
+            service.fetchUTZ(id: id,type: "MatchBlocks"){ [weak self] (result: Result<MatchBlocksTask,Error>) in
                 guard let self = self else {
                     print("[TaskViewControllerHelper]: self is nil")
                     return}
@@ -89,7 +89,7 @@ final class TaskViewControllerHelper{
                 }
             }
         case "PhotoOrder":
-            service.fetchUTZ(id: id){ [weak self] (result: Result<PhotoOrderTask,Error>) in
+            service.fetchUTZ(id: id,type: "PhotoOrder"){ [weak self] (result: Result<PhotoOrderTask,Error>) in
                 guard let self = self else {
                     print("[TaskViewControllerHelper]: self is nil")
                     return}
@@ -107,48 +107,4 @@ final class TaskViewControllerHelper{
         }
        
     }
-//    func buttonTapped(){
-//        guard let task = storage.getNext() else{
-//            print("storage is empty")
-//            return
-//        }
-//        let id = task.id
-//        let taskType = task.taskType
-//        var typeToFetch: TaskType
-//        switch taskType{
-//        case "MarkOrCorrect":
-//            typeToFetch = .markOrCorrect
-//        case "FillGaps":
-//            typeToFetch = .fillGaps
-//        case "ChooseRight":
-//            typeToFetch = .chooseRight
-//        case "MatchBlocks":
-//            typeToFetch = .matchBlocks
-//        case "PhotoOrder":
-//            typeToFetch = .photoOrder
-//        default:
-//            print("Error: Undefiend UTZ TYPE")
-//            return
-//        }
-//        guard let taskTypeClass = taskTypeMapping[typeToFetch] else {
-//               print("Unknown task type")
-//               return
-//        }
-//        
-//        fetchTask(id: id, taskTypeClass: taskTypeClass)
-//
-//    }
-//    func fetchTask<T: TaskTypeProtocol>(id: Int, taskTypeClass: T.Type) {
-//        fetchUTZ(id: id, type: taskTypeClass) { result in
-//            switch result {
-//            case .success(let task):
-//                
-//            case .failure(let error):
-//                print("Error fetching task: \(error)")
-//            }
-//        }
-//    }
-//    func fetchUTZ<T: TaskTypeProtocol>(id: Int, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
-//        
-//    }
 }

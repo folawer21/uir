@@ -6,22 +6,35 @@
 //
 
 import Foundation
-struct UTZTask{
+struct UTZList: Codable{
+    let utzList: [UTZList]
+}
+struct UTZTask:Codable{
     let id: Int
     let taskType: String
 }
 final class TasksStorage{
-    private (set) var tasks : [UTZTask]
+    private static var _tasks : [UTZTask] = []
+    var tasks: [UTZTask]{
+        get{
+            return TasksStorage._tasks
+        }
+        set {
+            TasksStorage._tasks = newValue
+        }
+    }
+    
     func setTasks(tasks: [UTZTask]){
-        self.tasks = tasks
+        TasksStorage._tasks = tasks
     }
     func getNext() -> UTZTask?{
-        return tasks.last
+        return TasksStorage._tasks.last
     }
     func removeLast(){
-        tasks.removeLast()
+        TasksStorage._tasks.removeLast()
     }
-    init(){
+    private init(){
         tasks = []
     }
+    static let shared = TasksStorage()
 }

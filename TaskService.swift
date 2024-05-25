@@ -15,17 +15,17 @@ final class TasksService{
     private let configuration = Configuration.test
     private let tokenStorage = TokenStorage()
     
-    private func makeUTZUrlRequest(id: Int) -> URLRequest?{
+    private func makeUTZUrlRequest(id: Int,type: String) -> URLRequest?{
         //TODO: Обработать добавление id в ссылку или куда
-        guard let url = URL(string: "http://79.174.80.180:7000") else {return nil}
+        guard let url = URL(string: "http://79.174.80.180:9000/api/" + type ) else {return nil}
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.addValue("Bearer \(tokenStorage.token)", forHTTPHeaderField: "Authorization")
         return urlRequest
     }
     
-    func fetchUTZ<T: Codable>(id: Int,completion: @escaping(Result<T,Error>) -> Void){
-        guard let urlRequest = makeUTZUrlRequest(id: id) else {
+    func fetchUTZ<T: Codable>(id: Int,type:String,completion: @escaping(Result<T,Error>) -> Void){
+        guard let urlRequest = makeUTZUrlRequest(id: id,type: type) else {
             print("[fetchUTZ]: TaskServiceError - invalidRequest")
             completion(.failure(TasksServiceError.invalidRequest))
             return

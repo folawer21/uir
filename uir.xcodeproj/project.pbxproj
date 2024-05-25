@@ -37,6 +37,7 @@
 		3EA0AA852C020D9100317403 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA0AA842C020D9100317403 /* TaskService.swift */; };
 		3EA0AA882C023CDA00317403 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 3EA0AA872C023CDA00317403 /* ProgressHUD */; };
 		3EA0AA8A2C023D4500317403 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA0AA892C023D4500317403 /* UIBlockingProgressHUD.swift */; };
+		3EA0AA8C2C024B4400317403 /* TaskListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA0AA8B2C024B4400317403 /* TaskListService.swift */; };
 		3EBB6FAC2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */; };
 		3EBB6FAE2BDAFB0400AE45F3 /* ImageOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */; };
 		3EBB6FB02BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */; };
@@ -82,6 +83,7 @@
 		3EA0AA822C020B1F00317403 /* TaskViewContollerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewContollerHelper.swift; sourceTree = "<group>"; };
 		3EA0AA842C020D9100317403 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		3EA0AA892C023D4500317403 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
+		3EA0AA8B2C024B4400317403 /* TaskListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListService.swift; sourceTree = "<group>"; };
 		3EBB6FAB2BDAF81300AE45F3 /* CorrectPhotosOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectPhotosOrderViewController.swift; sourceTree = "<group>"; };
 		3EBB6FAD2BDAFB0400AE45F3 /* ImageOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrderCell.swift; sourceTree = "<group>"; };
 		3EBB6FAF2BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRightAnswersViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		3E7F5EA62BA87E0C0018BCEF = {
 			isa = PBXGroup;
 			children = (
+				3EA0AA8B2C024B4400317403 /* TaskListService.swift */,
 				3EA0AA892C023D4500317403 /* UIBlockingProgressHUD.swift */,
 				3EA0AA842C020D9100317403 /* TaskService.swift */,
 				3EA0AA822C020B1F00317403 /* TaskViewContollerHelper.swift */,
@@ -290,6 +293,7 @@
 				3EBB6FB02BDBF26A00AE45F3 /* ChooseRightAnswersViewController.swift in Sources */,
 				3EA0AA852C020D9100317403 /* TaskService.swift in Sources */,
 				3EC8AC4E2BE295620097E262 /* MatchBlocksViewController.swift in Sources */,
+				3EA0AA8C2C024B4400317403 /* TaskListService.swift in Sources */,
 				3EBB6FAE2BDAFB0400AE45F3 /* ImageOrderCell.swift in Sources */,
 				3E7F5EC92BA8BAAC0018BCEF /* AuthViewController.swift in Sources */,
 				3EA0AA812C02055700317403 /* TasksStorage.swift in Sources */,
