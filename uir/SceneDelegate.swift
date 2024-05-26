@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MatchBlocksViewController(task: "SadSDASD",left: ["A","B","C"], right: ["11","22222","33333333"])
+        window?.rootViewController = SplashScreenViewController()
         window?.makeKeyAndVisible()
     }
 

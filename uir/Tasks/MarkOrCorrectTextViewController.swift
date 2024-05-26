@@ -90,7 +90,16 @@ final class MarkOrCorrectTextViewController: UIViewController{
 //        hintLabel.translatesAutoresizingMaskIntoConstraints = false
 //        return hintLabel
 //    }()
-   
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("", for: .normal)
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.tintColor = .black
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     private let sendButton: UIButton = {
         var button = UIButton()
         button.setTitle("Отправить", for: .normal)
@@ -110,6 +119,9 @@ final class MarkOrCorrectTextViewController: UIViewController{
         return button
     }()
     //MARK: objc methods
+    @objc private func backButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
     @objc
     private func infoButtonTappedUp(){
         hintView.hide()
@@ -119,37 +131,24 @@ final class MarkOrCorrectTextViewController: UIViewController{
         configHintView()
         hintView.show()
     }
-//    @objc
-//    private func infoButtonTapped(){
-//        //TODO: UIVIew на котором будет hint, mistakes label => отдельный класс с инитом
-//        let alert = UIAlertController()
-//        alert.message = "ПОДСКАЗКА"
-//        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-//        present(alert, animated: true)
-//    }
+    
     @objc
     private func sendButtonTapped(){
         //TODO: проверка через сервер
         if 1==1{
-            navigationController?.popViewController(animated: true)
-            delegate?.fetchNextTask()
+            let alert = UIAlertController(title: "Пройдено!", message: "Вы успешно выполнили задание. \n Ваша оценка 100 баллов.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default){ [weak self] result in
+                self?.dismiss(animated: true)
+                self?.delegate?.fetchNextTask()
+            })
+            present(alert, animated: true)
         }else{
-            let alert = UIAlertController()
-            alert.message = ("Ошибка")
+            let alert = UIAlertController(title: "Неверно", message: "Вы допустили ошибку. \n Ваша оценка 0 баллов.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
             present(alert, animated: true)
         }
     }
-    
-//    @objc
-//    private func textFieldDidBeginEditing(){
-//        answerTextField.layer.borderColor = UIColor.blue.cgColor
-//    }
-//    
-//    @objc
-//    private func textFieldDidEndEditing(){
-//        answerTextField.layer.borderColor = UIColor.black.cgColor
-//    }
+
     //MARK: Init
     init(taskText: String, mistakes: Int,hint: String ) {
         self.givenTextLabel.text = "Условие задачи "
@@ -191,7 +190,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
     func addActions(){
         hintButton.addTarget(self, action: #selector(infoButtonTappedUp), for: .touchUpInside)
         hintButton.addTarget(self, action: #selector(infoButtonDown), for: .touchDown)
-        
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
     }
     
@@ -205,6 +204,7 @@ final class MarkOrCorrectTextViewController: UIViewController{
         view.addSubview(givenBlock)
         view.addSubview(answerBlock)
         
+        view.addSubview(backButton)
         view.addSubview(sendButton)
         view.addSubview(hintButton)
         view.addSubview(hintView)
@@ -237,6 +237,9 @@ final class MarkOrCorrectTextViewController: UIViewController{
         let sendButtonHeight = CGFloat(54)
         let hintButtonSize = CGFloat(54)
         NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
+            
             headerTaskBlock.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             headerTaskBlock.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             headerTaskBlock.widthAnchor.constraint(equalToConstant: headerWidth),
@@ -271,7 +274,6 @@ final class MarkOrCorrectTextViewController: UIViewController{
             sendButton.topAnchor.constraint(equalTo: answerBlock.bottomAnchor, constant: buttonIndent),
             sendButton.heightAnchor.constraint(equalToConstant: sendButtonHeight),
             sendButton.widthAnchor.constraint(equalToConstant: buttonWidth),
-            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             
             hintButton.leadingAnchor.constraint(equalTo: sendButton.trailingAnchor,constant: headerHeight),
             hintButton.widthAnchor.constraint(equalToConstant: hintButtonSize),

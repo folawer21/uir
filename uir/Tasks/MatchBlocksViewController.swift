@@ -22,6 +22,16 @@ final class MatchBlocksViewController: UIViewController{
         return label
     }()
     
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("", for: .normal)
+        button.tintColor = .black
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     private let sendButton = {
         let button = UIButton()
         button.setTitle("Отправить", for: .normal)
@@ -69,28 +79,36 @@ final class MatchBlocksViewController: UIViewController{
     @objc private func sendButtonTapped(){
         //TODO: проверка через сервер
         if 1==1{
-            navigationController?.popViewController(animated: true)
-            delegate?.fetchNextTask()
+            let alert = UIAlertController(title: "Пройдено!", message: "Вы успешно выполнили задание. \n Ваша оценка 100 баллов.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default){ [weak self] result in
+                self?.dismiss(animated: true)
+                self?.delegate?.fetchNextTask()
+            })
+            present(alert, animated: true)
         }else{
-            let alert = UIAlertController()
-            alert.message = ("Ошибка")
+            let alert = UIAlertController(title: "Неверно", message: "Вы допустили ошибку. \n Ваша оценка 0 баллов.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
             present(alert, animated: true)
         }
     }
-    
+    @objc private func backButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     private func configViews(){
         blockView.blockView(radious: 20)
         headerView.headerView(radious: 20)
     }
     private func addTargets(){
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
     private func addViewsToMain(){
         view.addSubview(leftTableView)
         view.addSubview(rightTableView)
         view.addSubview(headerView)
         view.addSubview(blockView)
+        view.addSubview(backButton)
         view.addSubview(sendButton)
     }
     private func addViewsToSubViews(){
@@ -118,6 +136,9 @@ final class MatchBlocksViewController: UIViewController{
         
         
         NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
+            
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             headerView.widthAnchor.constraint(equalToConstant: headerWidth),

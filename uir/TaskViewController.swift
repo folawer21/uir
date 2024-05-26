@@ -24,7 +24,9 @@ final class TaskViewController: UIViewController{
         view.addSubview(startButton)
         NSLayoutConstraint.activate([
             startButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            startButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+            startButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            startButton.widthAnchor.constraint(equalToConstant: 200),
+            startButton.heightAnchor.constraint(equalToConstant: 100),
         ])
         startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
@@ -45,34 +47,32 @@ final class TaskViewController: UIViewController{
     }
     
     func showMarkOrCorrectVC(data: MarkOrCorrectTask){
-        //TODO: Конструкток из структуры
         let vc = MarkOrCorrectTextViewController(data: data)
         vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
         UIBlockingProgressHUD.dissmiss()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
     func showFillGapsVC(data: FillGapsTask){
-        //TODO: Конструкток из структуры
         let vc = FillGapsViewController(data: data)
         vc.delegate = self
-//        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .fullScreen
         UIBlockingProgressHUD.dissmiss()
-        self.navigationController?.pushViewController(vc, animated: true)
-//        present(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
     func showChooseRightVC(data: ChooseRightTask){
-        //TODO: Конструкток из структуры
         let vc = ChooseRightAnswersViewController(data: data)
         vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
         UIBlockingProgressHUD.dissmiss()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
     func showMatchBlocksVC(data: MatchBlocksTask){
-        //TODO: Конструкток из структуры
         let vc = MatchBlocksViewController(data: data)
         vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
         UIBlockingProgressHUD.dissmiss()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
     func showPhotoOrderVC(data: PhotoOrderTask){
         //TODO: Конструкток из структуры
@@ -80,9 +80,16 @@ final class TaskViewController: UIViewController{
         UIBlockingProgressHUD.dissmiss()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+    private func configureBackButton(){
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backButton")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backButton")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = UIColor.black
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBackButton()
         helper.viewController = self
         buildScreen()
         view.backgroundColor = .white

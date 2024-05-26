@@ -76,7 +76,16 @@ final class FillGapsViewController: UIViewController{
 
     }()
 
-
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("", for: .normal)
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.tintColor = .black
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     private let sendButton: UIButton = {
         var button = UIButton()
         button.setTitle("Отправить", for: .normal)
@@ -105,17 +114,22 @@ final class FillGapsViewController: UIViewController{
         configHintView()
         hintView.show()
     }
-   
+    @objc private func backButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     @objc
     private func sendButtonTapped(){
         //TODO: проверка через сервер
-        if 1==1{
-            navigationController?.popViewController(animated: true)
-            delegate?.fetchNextTask()
+        if 1 == 1{
+            let alert = UIAlertController(title: "Пройдено!", message: "Вы успешно выполнили задание. \n Ваша оценка 100 баллов.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default){ [weak self] result in
+                self?.dismiss(animated: true)
+                self?.delegate?.fetchNextTask()
+            })
+            present(alert, animated: true)
         }else{
-            let alert = UIAlertController()
-            alert.message = (answerTextField.text == "True" ? "Верно" : "Ошибка")
+            let alert = UIAlertController(title: "Неверно", message: "Вы допустили ошибку. \n Ваша оценка 0 баллов.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
             present(alert, animated: true)
         }
@@ -140,6 +154,8 @@ final class FillGapsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        let backButton = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(backButtonTapped))
+        self.navigationItem.leftBarButtonItem = backButton
         setupViews()
         addActions()
         addViews()
@@ -147,6 +163,7 @@ final class FillGapsViewController: UIViewController{
         applyConstraints()
         
     }
+    
     func setupViews(){
         answerTextField.delegate = self
         taskBlock.blockView(radious: 20)
@@ -160,8 +177,11 @@ final class FillGapsViewController: UIViewController{
         hintButton.addTarget(self, action: #selector(infoButtonTappedUp), for: .touchUpInside)
         hintButton.addTarget(self, action: #selector(infoButtonDown), for: .touchDown)
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+
     }
     func addViews(){
+        
         view.addSubview(headerTaskBlock)
         view.addSubview(headerGivenBlock)
         view.addSubview(headerAnswerBlock)
@@ -171,6 +191,7 @@ final class FillGapsViewController: UIViewController{
         view.addSubview(givenBlock)
         view.addSubview(answerBlock)
         
+        view.addSubview(backButton)
         view.addSubview(sendButton)
         view.addSubview(hintButton)
         view.addSubview(hintView)
@@ -203,6 +224,9 @@ final class FillGapsViewController: UIViewController{
         let sendButtonHeight = CGFloat(54)
         let hintButtonSize = CGFloat(54)
         NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
+            
             headerTaskBlock.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             headerTaskBlock.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             headerTaskBlock.widthAnchor.constraint(equalToConstant: headerWidth),
@@ -274,6 +298,7 @@ final class FillGapsViewController: UIViewController{
         ])
         
     }
+
     func configHintView(){
         let buttonFrame = hintButton.frame
         hintView.frame.origin = CGPoint(x: self.view.frame.minX + 10 , y: buttonFrame.maxY - 5 - hintView.frame.height)
@@ -288,7 +313,5 @@ extension FillGapsViewController: UITextViewDelegate{
             textView.text = ""
         }
     }
-    
-    
     
 }

@@ -40,6 +40,17 @@ final class ChooseRightAnswersViewController: UIViewController{
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("", for: .normal)
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.tintColor = .black
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let sendButton = {
         let button = UIButton()
         button.setTitle("Отправить", for: .normal)
@@ -51,14 +62,20 @@ final class ChooseRightAnswersViewController: UIViewController{
         button.backgroundColor = UIColor(named: "blueForHeaders")
         return button
     }()
+    @objc func backButtonTapped(){
+        self.dismiss(animated: true,completion: nil)
+    }
     @objc private func sendButtonTapped(){
         //TODO: проверка через сервер
         if 1==1{
-            navigationController?.popViewController(animated: true)
-            delegate?.fetchNextTask()
+            let alert = UIAlertController(title: "Пройдено!", message: "Вы успешно выполнили задание. \n Ваша оценка 100 баллов.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default){ [weak self] result in
+                self?.dismiss(animated: true)
+                self?.delegate?.fetchNextTask()
+            })
+            present(alert, animated: true)
         }else{
-            let alert = UIAlertController()
-            alert.message = ("Ошибка")
+            let alert = UIAlertController(title: "Неверно", message: "Вы допустили ошибку. \n Ваша оценка 0 баллов.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
             present(alert, animated: true)
         }
@@ -69,11 +86,14 @@ final class ChooseRightAnswersViewController: UIViewController{
     }
     private func addTargets(){
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+
     }
     private func addViewsToMain(){
         view.addSubview(tableView)
         view.addSubview(headerView)
         view.addSubview(blockView)
+        view.addSubview(backButton)
         view.addSubview(sendButton)
     }
     private func addViewsToSubViews(){
@@ -97,10 +117,10 @@ final class ChooseRightAnswersViewController: UIViewController{
         
         let buttonWidth = UIScreen.main.bounds.width/2.45
         let sendButtonHeight = CGFloat(54)
-
-        
-        
         NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
+            
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             headerView.widthAnchor.constraint(equalToConstant: headerWidth),
@@ -161,6 +181,7 @@ final class ChooseRightAnswersViewController: UIViewController{
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
+        let backButton = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(backButtonTapped))
 //        tableView.register(ChooseRightAnswersCell.self, forHeaderFooterViewReuseIdentifier: "rightAnswerCell")
         tableView.register(ChooseRightAnswersCell.self, forCellReuseIdentifier: "rightAnswerCell")
         
